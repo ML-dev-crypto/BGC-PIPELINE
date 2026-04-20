@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGC-QDR — Quantum Biosynthetic Gene Cluster Discovery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-logo">
+            <div class="nav-logo-main">BGC-QDR</div>
+            <div class="nav-logo-sub">Quantum Drug Discovery Platform</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#pipeline">Pipeline</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#demo">Demo</a></li>
+            <li><a href="#paper">Research</a></li>
+        </ul>
+        <button class="nav-cta" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">Run Analysis</button>
+    </nav>
+    
+    <!-- Hero Section with Video Background -->
+    <section class="hero" id="hero">
+        <!-- Animated Background (Palantir-style) -->
+        <div class="hero-animated-bg">
+            <div class="particle-field"></div>
+            <div class="grid-overlay"></div>
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        
+        <!-- Video Background (if available) -->
+        <div class="hero-video-container">
+            <video autoplay muted loop playsinline class="hero-video" id="heroVideo">
+                <!-- Try multiple high-quality sources -->
+                <source src="https://player.vimeo.com/external/370467553.hd.mp4?s=e90dcaba73c19f0e36f03406b47bbd6c106e6a10&profile_id=174" type="video/mp4">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-blue-dna-strands-21-large.mp4" type="video/mp4">
+                <source src="/dna-background.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">Environmental DNA · Quantum Machine Learning</div>
+            <h1 class="hero-headline">
+                Discover novel drug compounds<br>
+                <em>from environmental DNA</em>
+            </h1>
+            <p class="hero-sub">
+                A 6-phase quantum-classical hybrid pipeline that identifies biosynthetic 
+                gene clusters from eDNA and ranks them by drug-discovery potential using 
+                variational quantum circuits.
+            </p>
+            <div class="hero-actions">
+                <button class="btn-primary" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">Analyze Sample</button>
+                <button class="btn-ghost" onclick="document.getElementById('pipeline').scrollIntoView({behavior:'smooth'})">View Pipeline →</button>
+            </div>
+        </div>
+        <div class="scroll-cue">
+            <div class="scroll-line"></div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+    
+    <!-- Stats Bar -->
+    <div class="stats-bar" id="stats-bar">
+        <div class="stat-cell">
+            <div class="stat-num" data-count="68" data-suffix="">0</div>
+            <div class="stat-label">BGC Regions Detected</div>
+        </div>
+        <div class="stat-cell">
+            <div class="stat-num" data-count="14" data-suffix="">0</div>
+            <div class="stat-label">Virtual BGCs Assembled</div>
+        </div>
+        <div class="stat-cell">
+            <div class="stat-num" data-count="80" data-suffix="%">0%</div>
+            <div class="stat-label">VQC Accuracy</div>
+        </div>
+        <div class="stat-cell">
+            <div class="stat-num" data-count="2636" data-suffix="">0</div>
+            <div class="stat-label">MiBIG Training Set</div>
+        </div>
+    </div>
+    
+    <!-- Pipeline Section -->
+    <section class="pipeline-section" id="pipeline">
+        <div class="pipeline-header fade-up">
+            <h2>From river water<br>to forensic intelligence</h2>
+            <p>Four stages of automated analysis, powered by metagenomics and AI drug profiling.</p>
+        </div>
+
+        <!-- Phase 1: eDNA Extraction -->
+        <div class="product-row" data-delay="0">
+            <div class="product-meta">
+                <div>
+                    <div class="product-num">/0.1</div>
+                    <p class="product-desc">
+                        Collect water and sediment samples at field sites. Extract microbial eDNA 
+                        using portable lysis kits, then concentrate and purify for sequencing.
+                    </p>
+                </div>
+                <div class="product-tag">Collection · Extraction</div>
+            </div>
+            <div class="product-illustration">
+                <div class="illustration-content">
+                    <div class="illustration-title">eDNA</div>
+                    <div class="illustration-subtitle">Environmental extraction</div>
+                </div>
+            </div>
+            <div class="product-name-col">
+                <div class="product-name">eDNA</div>
+                <div class="product-name-sub">Environmental extraction</div>
+            </div>
+        </div>
+
+        <!-- Phase 2: Sequencing -->
+        <div class="product-row" data-delay="100">
+            <div class="product-meta">
+                <div>
+                    <div class="product-num">/0.2</div>
+                    <p class="product-desc">
+                        Shotgun metagenomic sequencing of raw eDNA. Assemble reads and identify 
+                        biosynthetic gene clusters using AntiSMASH and BiG-SCAPE algorithms.
+                    </p>
+                </div>
+                <div class="product-tag">Sequencing · Assembly</div>
+            </div>
+            <div class="product-illustration">
+                <div class="illustration-content">
+                    <div class="illustration-title">BGC-Seq</div>
+                    <div class="illustration-subtitle">Metagenomic assembly</div>
+                </div>
+            </div>
+            <div class="product-name-col">
+                <div class="product-name" style="font-size: clamp(56px,7vw,96px)">BGC-Seq</div>
+                <div class="product-name-sub">Metagenomic assembly</div>
+            </div>
+        </div>
+
+        <!-- Phase 3: AI Profiling -->
+        <div class="product-row" data-delay="200">
+            <div class="product-meta">
+                <div>
+                    <div class="product-num">/0.3</div>
+                    <p class="product-desc">
+                        AI matches detected BGC signatures against a curated database of 3,400+ 
+                        drug and precursor biosynthetic pathways. Confidence scored 0–100.
+                    </p>
+                </div>
+                <div class="product-tag">AI · Drug Profiling</div>
+            </div>
+            <div class="product-illustration">
+                <div class="illustration-content">
+                    <div class="illustration-title">Profiler</div>
+                    <div class="illustration-subtitle">AI drug signature matching</div>
+                </div>
+            </div>
+            <div class="product-name-col">
+                <div class="product-name" style="font-size: clamp(52px,6.5vw,90px)">Profiler</div>
+                <div class="product-name-sub">AI drug signature matching</div>
+            </div>
+        </div>
+
+        <!-- Phase 4: Risk Intelligence -->
+        <div class="product-row" data-delay="300">
+            <div class="product-meta">
+                <div>
+                    <div class="product-num">/0.4</div>
+                    <p class="product-desc">
+                        Generate site-level risk scores. Geolocate production hotspots. Export 
+                        forensic-grade PDF reports for law enforcement and public health agencies.
+                    </p>
+                </div>
+                <div class="product-tag">Intelligence · Reporting</div>
+            </div>
+            <div class="product-illustration">
+                <div class="illustration-content">
+                    <div class="illustration-title">RiskMap</div>
+                    <div class="illustration-subtitle">Geospatial intelligence</div>
+                </div>
+            </div>
+            <div class="product-name-col">
+                <div class="product-name" style="font-size: clamp(46px,6vw,84px)">RiskMap</div>
+                <div class="product-name-sub">Geospatial intelligence</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="results">
+        <div class="results-header fade-up">
+            <h2>Benchmark Results</h2>
+            <p>Validated against MiBIG 4.0 and S. coelicolor A3(2)</p>
+        </div>
+        <div class="results-grid">
+            <div class="result-card fade-up" data-delay="0">
+                <div class="result-metric">0.804 ± 0.031</div>
+                <div class="result-label">VQC Accuracy</div>
+                <div class="result-desc">Competitive with classical baselines</div>
+            </div>
+            <div class="result-card fade-up" data-delay="100">
+                <div class="result-metric">78.6%</div>
+                <div class="result-label">Novel BGCs</div>
+                <div class="result-desc">11/14 virtual BGCs are novel</div>
+            </div>
+            <div class="result-card fade-up" data-delay="200">
+                <div class="result-metric">64.7%</div>
+                <div class="result-label">Biological Validation</div>
+                <div class="result-desc">S. coelicolor ground truth</div>
+            </div>
+            <div class="result-card fade-up" data-delay="300">
+                <div class="result-metric">0.892</div>
+                <div class="result-label">XGBoost ROC-AUC</div>
+                <div class="result-desc">Best classical baseline</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo-section" id="demo">
+        <div class="demo-container fade-up">
+            <h2>Try BGC-QDR Pipeline</h2>
+            <p class="demo-subtitle">Upload your eDNA FASTA file or use sample data</p>
+            
+            <div class="demo-upload">
+                <div class="upload-area" id="uploadArea">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p>Drop FASTA file here or click to browse</p>
+                    <input type="file" id="fileInput" accept=".fasta,.fa,.fna" hidden>
+                </div>
+                
+                <div class="demo-actions">
+                    <button class="btn-primary" id="runAnalysis">Run Analysis</button>
+                    <button class="btn-ghost" id="useSample">Use Sample Data</button>
+                </div>
+            </div>
+
+            <div class="demo-results" id="demoResults" style="display:none;">
+                <h3>Analysis Results</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="results-output" id="resultsOutput"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section fade-up">
+        <div class="cta-headline">
+            From eDNA sequences<br>
+            to <em>ranked drug candidates</em><br>
+            in under 2 hours.
+        </div>
+        <div class="cta-right">
+            <p>
+                BGC-QDR integrates CNN detection, HMM annotation, graph reconstruction, 
+                and quantum machine learning into a unified PyTorch pipeline. 
+                GPU-accelerated, open-source, and ready for deployment.
+            </p>
+            <div class="cta-buttons">
+                <button class="btn-primary" onclick="window.open('https://github.com/yourusername/BGC-QDR', '_blank')">
+                    View on GitHub →
+                </button>
+                <button class="btn-ghost" onclick="document.getElementById('paper').scrollIntoView({behavior:'smooth'})">
+                    Read Paper
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="paper">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>BGC-QDR</h4>
+                <p>Quantum Machine Learning for Biosynthetic Gene Cluster Discovery</p>
+                <p class="footer-citation">
+                    Submitted to IEEE Transactions on Computational Biology and Bioinformatics, 2026
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="../PROJECT_COMPLETE_DOCUMENTATION.md">Documentation</a></li>
+                    <li><a href="../benchmark_results/benchmark_report.txt">Benchmarks</a></li>
+                    <li><a href="../VALIDATION_REPORT.txt">Validation</a></li>
+                    <li><a href="../DOCKER_TESTING.md">Docker Setup</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Technologies</h4>
+                <ul>
+                    <li>PennyLane 0.36</li>
+                    <li>PyTorch 2.1 + CUDA</li>
+                    <li>PyHMMER 0.10</li>
+                    <li>Vite + ES Modules</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>BGC-QDR v1.0 · © 2026</span>
+            <span>Built with Vite + Vanilla JS</span>
+        </div>
+    </footer>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
