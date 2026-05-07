@@ -1,140 +1,422 @@
-# Restaurant Billing System
+# BGC-QDR: Biosynthetic Gene Cluster Detection & Analysis Pipeline
 
-A modern, responsive restaurant billing web application built with React and Vite.
+A complete full-stack application for detecting, analyzing, and ranking Biosynthetic Gene Clusters (BGCs) from environmental DNA samples.
 
-## Features
+## 🎯 Overview
 
-- 🍽️ Beautiful UI with sidebar navigation
-- 📱 Fully responsive design
-- 🛒 Real-time order cart management
-- 💰 Automatic subtotal, tax, and total calculation
-- 🎨 Modern orange-themed design
-- 📦 Category-based menu filtering (All Dishes, Main, Sides, Desserts, Drinks)
-- ➕➖ Quantity adjustment for items
-- 🗑️ Remove items from cart
+**BGC-QDR** (Biosynthetic Gene Cluster - Quality Detection & Ranking) is an integrated pipeline that combines:
+- **Frontend**: Modern web interface with Palantir-style design
+- **Backend**: Flask REST API for pipeline orchestration
+- **Pipeline**: Python-based BGC detection and analysis tools
 
-## Project Structure
+## 🏗️ Architecture
 
 ```
-restaurant-billing/
-├── src/
-│   ├── components/
-│   │   ├── MenuItem.jsx          # Individual menu item card
-│   │   ├── MenuItem.css
-│   │   ├── OrderCart.jsx         # Order cart with billing
-│   │   └── OrderCart.css
-│   ├── data/
-│   │   └── menuData.js           # Menu items data
-│   ├── App.jsx                   # Main application
-│   ├── App.css                   # Main styles
-│   ├── main.jsx                  # Entry point
-│   └── index.css                 # Global styles
-├── index.html
-├── package.json
-├── vite.config.js
-└── README.md
+┌─────────────────────────────────────────────────────────┐
+│                  Web Interface                          │
+│  (Modern UI with DNA video background)                 │
+│  - Sample upload                                        │
+│  - Real-time progress tracking                          │
+│  - Interactive results visualization                    │
+└────────────────────┬────────────────────────────────────┘
+                     │ REST API
+┌────────────────────▼────────────────────────────────────┐
+│              Flask Backend API                          │
+│  - File upload handling                                 │
+│  - Job management                                       │
+│  - Pipeline orchestration                               │
+└────────────────────┬────────────────────────────────────┘
+                     │
+┌────────────────────▼────────────────────────────────────┐
+│           BGC-QDR Pipeline (6 Phases)                   │
+│                                                          │
+│  Phase 1-2: BGC Detection                               │
+│    → ORF prediction (Prodigal)                          │
+│    → Domain annotation                                  │
+│    → BGC classification                                 │
+│                                                          │
+│  Phase 3: Graph Reconstruction                          │
+│    → Build BGC similarity graphs                        │
+│    → Identify virtual BGCs                              │
+│                                                          │
+│  Phase 4-5: Novelty Assessment                          │
+│    → Compare against MIBiG database                     │
+│    → Calculate novelty scores                           │
+│                                                          │
+│  Phase 6: VQC Ranking                                   │
+│    → Virtual Quality Control scoring                    │
+│    → Rank candidates by confidence                      │
+└─────────────────────────────────────────────────────────┘
 ```
 
-## Installation
+## 📊 Pipeline Workflow
 
-1. **Install dependencies:**
+### Input
+- **FASTA file** containing genomic sequences (contigs/scaffolds)
+- Environmental DNA (eDNA) samples from metagenomic sequencing
+
+### Phase 1-2: BGC Detection
+1. **ORF Prediction** (`call_orfs.py`)
+   - Uses Prodigal in metagenomic mode
+   - Predicts protein-coding genes
+   - Outputs: proteins.faa, nucleotides.fna, genes.gbk
+
+2. **BGC Classification** (`classify_bgcs.py`)
+   - Applies biological rules to identify BGC types
+   - Classifies into: PKS, NRPS, RiPP, Terpene, etc.
+   - Filters candidates by confidence score
+
+### Phase 3: Graph Reconstruction
+- Builds similarity graphs between detected BGCs
+- Identifies "virtual BGCs" (consensus sequences)
+- Reduces redundancy in metagenomic data
+
+### Phase 4-5: Novelty Assessment
+- Compares BGCs against known clusters (MIBiG database)
+- Calculates novelty percentage
+- Identifies potentially novel natural products
+
+### Phase 6: VQC Ranking
+- Virtual Quality Control scoring
+- Ranks candidates by:
+  - Confidence score (0-1)
+  - Novelty percentage
+  - BGC class completeness
+- Outputs top candidates for further analysis
+
+### Output
+- **JSON results** with ranked BGC candidates
+- **Detailed reports** with confidence scores
+- **Downloadable data** for downstream analysis
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.8+
+- Prodigal (optional, for ORF prediction)
+- Modern web browser
+
+### Installation
+
+1. **Clone the repository:**
    ```bash
-   npm install
+   git clone <repository-url>
+   cd web.dv
    ```
 
-2. **Start the development server:**
+2. **Install Python dependencies:**
    ```bash
-   npm run dev
+   pip install -r backend_requirements.txt
    ```
 
-3. **Build for production:**
+3. **Set up directories:**
    ```bash
-   npm run build
+   mkdir -p uploads results frontend/assets
    ```
 
-## If PowerShell Execution Policy Error Occurs
+4. **Copy frontend assets:**
+   ```bash
+   cp "New folder/index.html" frontend/index.html
+   cp "New folder/DNA.mp4" frontend/assets/DNA.mp4
+   ```
 
-If you get an error about running scripts being disabled, run this command in PowerShell as Administrator:
+### Running the Application
 
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+**Option 1: Automated Startup (Windows)**
+```bash
+.\start_fullstack.ps1
 ```
 
-Or run the commands directly in Command Prompt (cmd) instead of PowerShell.
+**Option 2: Manual Startup**
 
-## Usage
-
-1. **Browse Menu**: Click on category buttons in the left sidebar (All Dishes, Main, Sides, Desserts, Drinks)
-2. **Add Items**: Click the orange "+" button on any menu item to add it to your order
-3. **Manage Order**: 
-   - Use "+/-" buttons to adjust quantities
-   - Click the trash icon to remove items
-   - View real-time subtotal, tax (8%), and total
-4. **Place Order**: Click the "Place Order" button when ready
-5. **Generate Bill**: Click the "Bill" button to generate a receipt
-
-## Technologies Used
-
-- **React 18** - UI library
-- **Vite** - Build tool and dev server
-- **CSS3** - Styling with modern features
-- **JavaScript ES6+** - Modern JavaScript
-
-## Features Implementation
-
-### Menu Items
-- 14 different items across 4 categories
-- Each item has: name, description, price, category, and emoji icon
-- Responsive card layout with hover effects
-
-### Order Management
-- Add items to cart with automatic quantity tracking
-- Update quantities with +/- buttons
-- Remove items from cart
-- Real-time price calculations
-
-### Billing
-- Subtotal calculation
-- Tax calculation (8%)
-- Grand total display
-- Order number and table number display
-
-## Responsive Design
-
-- **Desktop (>1200px)**: Full three-column layout with sidebar, menu grid, and order cart
-- **Tablet (768px - 1200px)**: Collapsible order cart
-- **Mobile (<768px)**: Bottom navigation bar, stacked menu items
-
-## Customization
-
-### Change Tax Rate
-Edit the `taxRate` variable in `src/components/OrderCart.jsx`:
-```javascript
-const taxRate = 0.08; // 8% tax
+Terminal 1 - Backend:
+```bash
+python backend_api.py
 ```
 
-### Add New Menu Items
-Add items to `src/data/menuData.js`:
-```javascript
+Terminal 2 - Frontend:
+```bash
+cd frontend
+python -m http.server 3000
+```
+
+**Access the application:**
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:5000/api
+
+## 📁 Project Structure
+
+```
+web.dv/
+├── frontend/                    # Web interface
+│   ├── index.html              # Main HTML page
+│   ├── app.js                  # JavaScript with API integration
+│   ├── styles.css              # Additional styles
+│   └── assets/
+│       └── DNA.mp4             # Background video
+│
+├── backend_api.py              # Flask REST API server
+├── backend_requirements.txt    # Python dependencies
+│
+├── call_orfs.py               # ORF prediction wrapper
+├── classify_bgcs.py           # BGC classification engine
+├── benchmark_bgcqdr.py        # Performance benchmarking
+├── compare_with_deepbgc.py    # Comparison with DeepBGC
+│
+├── uploads/                   # User-uploaded FASTA files
+├── results/                   # Pipeline results (JSON)
+├── edna_fasta/               # Sample eDNA datasets
+├── benchmark_results/        # Benchmark data
+│
+├── README.md                 # This file
+├── FULLSTACK_README.md       # Detailed setup guide
+└── BACKEND_FIXES.md          # Backend implementation details
+```
+
+## 🔬 Pipeline Components
+
+### 1. ORF Calling (`call_orfs.py`)
+```bash
+python call_orfs.py \
+  --input regions.fasta \
+  --output-dir orfs/ \
+  --threads 4
+```
+
+**Purpose:** Predict protein-coding genes from DNA sequences
+
+**Tool:** Prodigal (metagenomic mode)
+
+**Output:**
+- `regions_proteins.faa` - Amino acid sequences
+- `regions_nucleotides.fna` - Nucleotide sequences
+- `regions_genes.gbk` - GenBank format
+
+### 2. BGC Classification (`classify_bgcs.py`)
+```bash
+python classify_bgcs.py \
+  --domain-table domains.csv \
+  --output bgc_candidates.csv \
+  --min-score 0.4 \
+  --min-domains 2
+```
+
+**Purpose:** Classify and filter BGC candidates
+
+**Rules Engine:**
+- PKS: Requires PKS + ACP domains
+- NRPS: Requires A + PCP domains
+- RiPP: Lanthipeptide, Thiopeptide markers
+- Terpene: Terpene synthase/cyclase
+- Hybrid: Multiple biosynthetic systems
+
+**Output:**
+- Classified BGC candidates
+- Confidence scores (high/medium/low)
+- Domain composition
+
+### 3. Benchmarking (`benchmark_bgcqdr.py`)
+```bash
+python benchmark_bgcqdr.py \
+  --input-dir edna_fasta/ \
+  --output-dir benchmark_results/
+```
+
+**Purpose:** Evaluate pipeline performance
+
+**Metrics:**
+- Detection accuracy
+- False positive rate
+- Processing time
+- Comparison with DeepBGC
+
+## 🌐 Web Interface
+
+### Features
+
+1. **Hero Section**
+   - Animated DNA video background
+   - Text scramble effect
+   - Call-to-action buttons
+
+2. **Pipeline Visualization**
+   - 4 interactive phases
+   - Hover effects with details
+   - SVG illustrations
+
+3. **Sample Upload**
+   - Drag-and-drop interface
+   - FASTA file validation
+   - Sample data option
+
+4. **Results Display**
+   - Interactive table
+   - Confidence score bars
+   - BGC class visualization
+   - Download functionality
+
+### API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/health` | GET | Health check |
+| `/api/stats` | GET | Pipeline statistics |
+| `/api/detect` | POST | BGC detection (Phase 1-2) |
+| `/api/reconstruct` | POST | Graph reconstruction (Phase 3) |
+| `/api/novelty` | POST | Novelty assessment (Phase 4-5) |
+| `/api/rank` | POST | VQC ranking (Phase 6) |
+| `/api/results/<job_id>` | GET | Download results |
+
+## 📊 Example Results
+
+### Input
+```
+Sample: GCA_000205625.1.fasta
+Sequences: 3 contigs
+Size: 45.6 KB
+```
+
+### Output
+```json
 {
-  id: 15,
-  name: "New Item",
-  description: "Item description",
-  price: 9.99,
-  category: "Main", // Main, Sides, Desserts, or Drinks
-  image: "🍕"
+  "job_id": "job_1715097201",
+  "bgc_count": 3,
+  "virtual_bgc_count": 1,
+  "novel_count": 1,
+  "vqc_accuracy": 0.823,
+  "top_candidates": [
+    {
+      "bgc_id": "VBGC_0000",
+      "score": 0.891,
+      "bgc_class": "NRPS",
+      "novelty": 24.56
+    }
+  ]
 }
 ```
 
-### Change Theme Colors
-Edit CSS variables in `src/App.css`:
-- Primary orange: `#ff8c42`
-- Hover orange: `#ff7a2e`
+## 🧪 Testing
 
-## License
+### Test Backend API
+```bash
+python test_backend.py
+```
 
-MIT License - feel free to use this project for your own purposes!
+### Test Pipeline Components
+```bash
+# Test ORF calling
+python call_orfs.py --input edna_fasta/GCA_000205625.1.fasta --output-dir test_orfs/
 
-## Author
+# Test BGC classification
+python classify_bgcs.py --domain-table test_domains.csv --output test_bgcs.csv
+```
 
-Built with ❤️ using React and Vite
+### Test Web Interface
+1. Open http://localhost:3000
+2. Click "Analyse a Sample"
+3. Choose "Use Sample Data"
+4. Verify pipeline executes all phases
+5. Check results display correctly
+
+## 📈 Performance
+
+### Benchmarks (on test dataset)
+
+| Metric | Value |
+|--------|-------|
+| Total BGCs detected | 68 |
+| Virtual BGCs | 14 |
+| Novel BGCs | 11 (78.6%) |
+| VQC Accuracy | 80.4% |
+| Processing time | ~2 minutes |
+
+See `benchmark_results/benchmark_report.txt` for detailed metrics.
+
+## 🔧 Configuration
+
+### Backend Configuration
+Edit `backend_api.py`:
+```python
+# Server settings
+app.run(debug=True, host='0.0.0.0', port=5000)
+
+# File paths
+UPLOAD_FOLDER = Path('uploads')
+RESULTS_FOLDER = Path('results')
+SAMPLE_FASTA = Path('edna_fasta/GCA_000205625.1.fasta')
+```
+
+### Frontend Configuration
+Edit `frontend/app.js`:
+```javascript
+// API base URL
+const API_BASE_URL = 'http://localhost:5000/api';
+```
+
+## 🐛 Troubleshooting
+
+### Video Not Playing
+- Verify `frontend/assets/DNA.mp4` exists
+- Check browser console for errors
+- Try different browser
+
+### Buttons Not Working
+- Verify `app.js` and `styles.css` are linked in HTML
+- Check browser console (F12)
+- Hard refresh: Ctrl+F5
+
+### Backend Errors
+- Check Python version: `python --version` (need 3.8+)
+- Install dependencies: `pip install -r backend_requirements.txt`
+- Verify port 5000 is available
+
+### Pipeline Errors
+- Install Prodigal: `conda install -c bioconda prodigal`
+- Check input file format (valid FASTA)
+- Verify file permissions
+
+## 📚 Documentation
+
+- **FULLSTACK_README.md** - Complete setup guide
+- **FULLSTACK_INTEGRATION.md** - Technical architecture
+- **BACKEND_FIXES.md** - Backend implementation details
+- **TEST_INTEGRATION.md** - Testing procedures
+- **CURRENT_STATUS.md** - Project status and roadmap
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is part of the BGC-QDR pipeline research.
+
+## 🙏 Acknowledgments
+
+- **Frontend Design**: Modern web design principles
+- **Fonts**: DM Sans, DM Serif Display, DM Mono (Google Fonts)
+- **Pipeline**: BGC-QDR research project
+- **Tools**: Prodigal, BioPython, Flask
+
+## 📞 Support
+
+For issues or questions:
+1. Check the troubleshooting section
+2. Review documentation files
+3. Check browser/backend console for errors
+4. Verify all dependencies are installed
+
+---
+
+**Version:** 2.0.0  
+**Last Updated:** 2026-05-07  
+**Status:** ✅ Production Ready
+
+**Quick Links:**
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:5000/api
+- Health Check: http://localhost:5000/api/health
