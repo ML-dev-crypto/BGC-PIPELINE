@@ -1,0 +1,34 @@
+# Dockerfile for BGC-QDR pipeline testing
+FROM python:3.10-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    wget \
+    git \
+    build-essential \
+    prodigal \
+    hmmer \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+COPY requirements.txt /tmp/
+RUN pip install --no-cache-dir -r /tmp/requirements.txt || \
+    pip install --no-cache-dir \
+    numpy \
+    torch \
+    pennylane \
+    scikit-learn \
+    xgboost \
+    biopython \
+    pyhmmer \
+    matplotlib \
+    pandas
+
+# Set working directory
+WORKDIR /workspace
+
+# Copy project files
+COPY . /workspace/
+
+# Run tests by default
+CMD ["python", "benchmark_bgcqdr.py"]

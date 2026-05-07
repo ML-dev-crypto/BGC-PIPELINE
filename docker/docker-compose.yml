@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # DeepBGC comparison service
+  deepbgc:
+    build:
+      context: .
+      dockerfile: Dockerfile.deepbgc
+    container_name: bgc-qdr-deepbgc
+    volumes:
+      - ./edna_fasta:/workspace/input:ro
+      - ./benchmark_results:/workspace/output
+      - ./mibig_gbk_4.0:/workspace/mibig:ro
+    command: >
+      bash -c "
+      echo 'Running DeepBGC on eDNA samples...' &&
+      for fasta in /workspace/input/*.fasta; do
+        deepbgc pipeline \$fasta -o /workspace/output/deepbgc_\$(basename \$fasta .fasta);
+      done &&
+      echo 'DeepBGC analysis complete. Results in /workspace/output/'
+      "
+  
+  # antiSMASH comparison service (requires more resources)
+  antismash:
+    image: antismash/standalone:7.1.0
+    container_name: bgc-qdr-antismash
+    volumes:
+      - ./edna_fasta:/input:ro
+      - ./benchmark_results:/output
+    command: >
+      bash -c "
+      echo 'Running antiSMASH on eDNA samples...' &&
+      for fasta in /input/*.fasta; do
+        antismash \$fasta --output-dir /output/antismash_\$(basename \$fasta .fasta) --genefinding-tool prodigal;
+      done &&
+      echo 'antiSMASH analysis complete.'
+      "
+  
+  # BGC-QDR testing environment
+  bgc-qdr-test:
+    build:
+      context: .
+      dockerfile: Dockerfile.bgcqdr
+    container_name: bgc-qdr-test
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: bash -c "python -m pytest tests/ -v || python benchmark_bgcqdr.py"

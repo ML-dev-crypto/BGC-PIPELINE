@@ -1,0 +1,26 @@
+# Dockerfile for DeepBGC comparison testing
+FROM python:3.10-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    wget \
+    git \
+    prodigal \
+    hmmer \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install DeepBGC
+RUN pip install --no-cache-dir deepbgc
+
+# Download DeepBGC models
+RUN deepbgc download
+
+# Set working directory
+WORKDIR /workspace
+
+# Copy input files
+COPY edna_fasta/*.fasta /workspace/input/
+COPY mibig_gbk_4.0 /workspace/mibig/
+
+# Default command
+CMD ["bash"]

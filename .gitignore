@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (large datasets)
+*.fasta.gz
+*.tar.gz
+mibig_gbk_4.0/
+pfam_data/
+
+# Results and outputs
+results/
+*_results/
+*_output/
+uploads/
+validation_sco/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+validation_report.html
+test_genome_results.tsv
+
+# Compiled binaries
+biotools/*.exe
+tools/*.exe
+
+# Node modules (if any remain)
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# Miniconda/Conda installations (accidentally included)
+CUsersansh7/
+C:Usersansh7/
+
+# Temporary null files
+$null
+
+# Downloaded installers and large binaries
+*.zip
+*.exe
+*.mp4
+*.tar.bz2
+
+# New folder with downloads
+New folder/
