@@ -259,7 +259,7 @@ def main():
         print(f"  {i}. {candidate['seq_id']}: {candidate['novelty_percentage']}% "
               f"(confidence: {candidate['confidence']}, length: {candidate['length']}bp)")
     
-    print(f"\n✅ Novelty assessment complete!")
+    print(f"\n[OK] Novelty assessment complete!")
 
 
 if __name__ == "__main__":

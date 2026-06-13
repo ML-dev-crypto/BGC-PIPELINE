@@ -89,7 +89,7 @@ html = """<!DOCTYPE html>
 with open('website/index.html', 'w', encoding='utf-8') as f:
     f.write(html)
 
-print("✅ Created website/index.html")
+print("[OK] Created website/index.html")
 print("📁 Website files ready in website/ directory")
 print("\nNext steps:")
 print("  1. Open website/index.html in a browser")

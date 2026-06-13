@@ -13,7 +13,7 @@ import numpy as np
 from sklearn.metrics import recall_score, precision_score
 
 def deployment_calibration():
-    print("🎯 Phase-1 Deployment Calibration")
+    print("[INFO] Phase-1 Deployment Calibration")
     print("=" * 50)
     
     # Load validation data
@@ -58,20 +58,20 @@ def deployment_calibration():
         # Check success criteria
         status = ""
         if recall >= 0.9 and flagged_pct <= 10:
-            status = "✅ GOOD"
+            status = "[OK] GOOD"
             if optimal_threshold is None:
                 optimal_threshold = threshold
         elif recall >= 0.9:
-            status = "⚠️ High flagged"
+            status = "[WARN] High flagged"
         else:
-            status = "❌ Low recall"
+            status = "[ERROR] Low recall"
         
         print(f"{threshold:.2f}       {recall:.3f}    {precision:.3f}     {flagged_pct:.1f}%     {status}")
     
     print("-" * 55)
     
     if optimal_threshold:
-        print(f"\n🎯 OPTIMAL THRESHOLD: {optimal_threshold}")
+        print(f"\n[INFO] OPTIMAL THRESHOLD: {optimal_threshold}")
         print(f"   This achieves recall ≥ 0.9 while flagging ≤ 10% of genome")
         
         # Save optimal threshold
@@ -79,11 +79,11 @@ def deployment_calibration():
             f.write(str(optimal_threshold))
         print(f"   Saved to: ./phase1_output/deployment_threshold.txt")
         
-        print("\n✅ PHASE-1 IS READY FOR GENOME SCANNING!")
+        print("\n[OK] PHASE-1 IS READY FOR GENOME SCANNING!")
         print("   Use: python scan_genome.py --input genome.fasta --output results.tsv")
         
     else:
-        print("\n⚠️ No threshold found that meets both criteria")
+        print("\n[WARN] No threshold found that meets both criteria")
         print("   Recommended: Use threshold 0.25 for high recall")
         
         # Default to 0.25 for high recall

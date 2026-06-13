@@ -185,6 +185,7 @@ class SequenceQC:
         Run QC on all sequences.
         
         Returns comprehensive QC report.
+        Raises exception if >80% of contigs fail QC.
         """
         print(f"Running QC on {len(self.sequences)} sequences...")
         
@@ -205,6 +206,15 @@ class SequenceQC:
         total = len(self.sequences)
         passed = len(passed_sequences)
         failed = len(failed_sequences)
+        fail_rate = (failed / total * 100) if total > 0 else 0.0
+        
+        # CRITICAL: Abort if >80% fail
+        if fail_rate > 80.0:
+            raise ValueError(
+                f"QC FAILED: {fail_rate:.1f}% of contigs failed quality checks. "
+                f"Input quality too low to proceed. "
+                f"Passed: {passed}/{total}, Failed: {failed}/{total}"
+            )
         
         # Count failure reasons
         failure_counts = Counter()
@@ -215,13 +225,23 @@ class SequenceQC:
         # Calculate input hash for cache invalidation
         input_hash = self._calculate_input_hash()
         
+        # Determine overall quality
+        if fail_rate < 10:
+            overall_quality = "good"
+        elif fail_rate < 30:
+            overall_quality = "medium"
+        else:
+            overall_quality = "poor"
+        
         report = {
             'input_file': str(self.fasta_path),
             'input_hash': input_hash,
             'total_sequences': total,
             'passed_sequences': passed,
             'failed_sequences': failed,
-            'pass_rate': round(passed / total * 100, 1) if total > 0 else 0.0,
+            'pass_rate': round(100 - fail_rate, 1),
+            'fail_rate': round(fail_rate, 1),
+            'overall_input_quality': overall_quality,
             'failure_reasons': dict(failure_counts),
             'qc_thresholds': {
                 'min_length': self.MIN_LENGTH,
@@ -314,7 +334,7 @@ def main():
         json.dump(report, f, indent=2)
     print(f"  Wrote QC report to {args.report}")
     
-    print(f"\n✅ QC complete!")
+    print(f"\n[OK] QC complete!")
 
 
 if __name__ == "__main__":

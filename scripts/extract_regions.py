@@ -118,10 +118,10 @@ def main():
     )
     
     if extracted_count > 0:
-        print(f"\n✅ Success: {extracted_count} regions extracted")
+        print(f"\n[OK] Success: {extracted_count} regions extracted")
         print(f"   Ready for ORF calling: {args.output}")
     else:
-        print(f"\n❌ Error: No regions extracted")
+        print(f"\n[ERROR] Error: No regions extracted")
         sys.exit(1)
 
 if __name__ == "__main__":

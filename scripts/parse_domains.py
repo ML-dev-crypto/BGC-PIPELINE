@@ -18,42 +18,53 @@ from Bio import SeqIO
 # Key BGC domains (Pfam HMM names)
 BGC_DOMAINS = {
     # PKS domains
-    'PKS': ['PKS_KS', 'KS', 'Ketoacyl-synt_C', 'Ketoacyl-synt_M'],
-    'AT': ['PKS_AT', 'AT_domain', 'Acyl-CoA_dh_M'],
-    'ACP': ['ACP_syn', 'ACP_beta', 'Acyl_carrier'],
-    'KR': ['PKS_KR', 'KR_domain', 'ketoacyl-synt'],
+    'PKS': ['PKS_KS', 'KS', 'Ketoacyl-synt_C', 'Ketoacyl-synt_M', 'PKS_synthase_CT'],
+    'AT': ['PKS_AT', 'AT_domain', 'Acyl-CoA_dh_M', 'Acyl-CoA_dh_1'],
+    'ACP': ['ACP_syn', 'ACP_beta', 'Acyl_carrier', 'PP-binding'],
+    'KR': ['PKS_KR', 'KR_domain', 'ketoacyl-synt', 'adh_short', 'adh_short_C2'],
     'DH': ['PKS_DH', 'DH_domain'],
     'ER': ['PKS_ER', 'ER_domain'],
-    'TE': ['Thioesterase', 'Thioest', 'TE_domain'],
-    
+    'TE': ['Thioesterase', 'Thioest', 'TE_domain', 'Abhydrolase_1'],
+
     # NRPS domains
-    'A': ['AMP-binding', 'A_domain'],
-    'C': ['Condensation', 'C_domain'],
-    'PCP': ['PCP', 'Thiolation'],
+    'A': ['AMP-binding', 'A_domain', 'AMP-binding_C'],
+    'C': ['Condensation', 'C_domain', 'Cond_subdomain'],
+    'PCP': ['PCP', 'Thiolation', 'PP-binding'],
     'E': ['Epimerization'],
-    
+
     # Modifying enzymes
-    'MT': ['Methyltransf_', 'SAM_MT'],
-    'HAL': ['Halogenase'],
-    'P450': ['p450'],
-    'GT': ['Glycos_transf_'],
-    
+    'MT': ['Methyltransf_', 'SAM_MT', 'Methyltransf_2', 'Methyltransf_3',
+           'Methyltransf_11', 'Methyltransf_12', 'Methyltransf_23', 'NNMT_PNMT_TEMT'],
+    'HAL': ['Halogenase', 'Trp_halogenase'],
+    'P450': ['p450', 'Cyt-b5'],
+    'GT': ['Glycos_transf_', 'Glycos_transf_1', 'Glycos_transf_2', 'Glyco_tran_28_C'],
+
     # RiPPs
-    'Lasso': ['Lasso_Fused_RRE', 'PF13471'],
-    'Lanthi': ['Lant_dehydr_N', 'Lant_dehydr_C'],
-    'Thiopep': ['Thiopep_cyc'],
-    
+    'Lasso': ['Lasso_Fused_RRE', 'PF13471', 'RRE_domain'],
+    'Lanthi': ['Lant_dehydr_N', 'Lant_dehydr_C', 'DUF4135'],
+    'Thiopep': ['Thiopep_cyc', 'YcaO', 'ATP-grasp'],
+
+    # Terpenes
+    'Terpene_synth': ['Terpene_synth', 'Terpene_synth_C', 'TRI5_like',
+                      'Bflower', 'Bflower_2', 'SQHop_cyclase', 'SQHop_cyclase_C',
+                      'Prenyltrans', 'GGPP_synth', 'Polyprenyl_synt',
+                      'Terpene_cyclase', 'Gp5_trimer', 'Gp5_trimer_C'],
+    'Terpene_cyclase': ['SQHop_cyclase', 'SQHop_cyclase_C', 'Terpene_cyclase',
+                        'Lycopene_cycl', 'Terpene_synth_C'],
+
     # Resistance
-    'ABC': ['ABC_tran', 'ABC_membrane'],
-    'MFS': ['MFS_1'],
-    
+    'ABC': ['ABC_tran', 'ABC_membrane', 'ABC_membrane_2', 'ABC_tran_2'],
+    'MFS': ['MFS_1', 'MFS_2'],
+
     # Regulation
-    'LuxR': ['LuxR_C_like'],
-    'TetR': ['TetR_N'],
-    
-    # Other
-    'FAD': ['FAD_binding_'],
-    'NAD': ['NAD_binding_']
+    'LuxR': ['LuxR_C_like', 'GerE'],
+    'TetR': ['TetR_N', 'TetR_C'],
+
+    # Other BGC-associated
+    'FAD': ['FAD_binding_', 'FAD_binding_2', 'FAD_binding_3', 'PCMH-type_FAD'],
+    'NAD': ['NAD_binding_', 'NAD_binding_1', 'NAD_binding_4', 'Rossmann-like'],
+    'Oxidoreductase': ['2OG-FeII_Oxy', 'PhyH', 'Orn_DAP_Arg_mut', 'RmlD_sub_bind'],
+    'Aminotransferase': ['Aminotran_', 'Aminotran_1_2', 'Aminotran_3', 'Aminotran_5'],
 }
 
 def flatten_domain_mapping():
@@ -96,9 +107,12 @@ def parse_domtblout(domtblout_path: str, evalue_cutoff: float = 1e-5) -> pd.Data
             if len(fields) < 22:
                 continue
             
-            target_name = fields[0]     # protein ID
-            query_name = fields[3]      # HMM model name
-            evalue = float(fields[6])   # E-value
+            # hmmscan domtblout format:
+            # col 0 = HMM/profile name (target)
+            # col 3 = protein/query name (query)
+            query_name  = fields[0]   # HMM model name  (e.g. Terpene_synth)
+            target_name = fields[3]   # protein sequence ID
+            evalue = float(fields[6])   # full-seq E-value
             score = float(fields[7])    # bit score
             hmm_from = int(fields[15])  # HMM coord start
             hmm_to = int(fields[16])    # HMM coord end
@@ -142,6 +156,22 @@ def parse_domtblout(domtblout_path: str, evalue_cutoff: float = 1e-5) -> pd.Data
     
     return df
 
+def load_region_metadata(regions_fasta: str) -> pd.DataFrame:
+    """Load per-region metadata from the original input FASTA."""
+    regions = []
+
+    for record in SeqIO.parse(regions_fasta, "fasta"):
+        sequence = str(record.seq).upper()
+        n_content_pct = round((sequence.count('N') / len(sequence) * 100), 2) if sequence else 0.0
+        regions.append({
+            'region_id': record.id,
+            'region_header': record.description,
+            'n_content_pct': n_content_pct,
+        })
+
+    return pd.DataFrame(regions)
+
+
 def extract_gene_metadata(protein_fasta: str) -> pd.DataFrame:
     """
     Extract gene metadata from Prodigal protein FASTA headers.
@@ -178,13 +208,27 @@ def extract_gene_metadata(protein_fasta: str) -> pd.DataFrame:
                 region_match = re.match(r'(.+)_\d+$', gene_id)
                 region_id = region_match.group(1) if region_match else "unknown"
                 
+                attributes = {}
+                if len(parts) >= 5:
+                    for field in parts[4].split(';'):
+                        if '=' in field:
+                            key, value = field.split('=', 1)
+                            attributes[key] = value
+
+                partial = attributes.get('partial', '')
+                has_start_codon = len(partial) >= 1 and partial[0] == '0'
+                has_stop_codon = len(partial) >= 2 and partial[1] == '0'
+
                 genes.append({
                     'gene_id': gene_id,
                     'region_id': region_id,
                     'start': start,
                     'end': end,
                     'strand': strand,
-                    'length': abs(end - start) + 1
+                    'length': abs(end - start) + 1,
+                    'partial': partial,
+                    'has_start_codon': has_start_codon,
+                    'has_stop_codon': has_stop_codon,
                 })
             except ValueError:
                 print(f"  Warning: Could not parse coordinates for {gene_id}")
@@ -194,7 +238,11 @@ def extract_gene_metadata(protein_fasta: str) -> pd.DataFrame:
     
     return df
 
-def build_domain_table(domains_df: pd.DataFrame, genes_df: pd.DataFrame) -> pd.DataFrame:
+def build_domain_table(
+    domains_df: pd.DataFrame,
+    genes_df: pd.DataFrame,
+    regions_df: pd.DataFrame | None = None,
+) -> pd.DataFrame:
     """
     Build comprehensive domain table by joining domains with gene metadata.
     """
@@ -208,6 +256,17 @@ def build_domain_table(domains_df: pd.DataFrame, genes_df: pd.DataFrame) -> pd.D
         right_on='gene_id', 
         how='left'
     )
+
+    if regions_df is not None and not regions_df.empty:
+        domain_table = domain_table.merge(
+            regions_df[['region_id', 'n_content_pct']],
+            on='region_id',
+            how='left',
+        )
+    elif 'n_content_pct' not in domain_table.columns:
+        domain_table['n_content_pct'] = 0.0
+
+    domain_table['n_content_pct'] = domain_table['n_content_pct'].fillna(0.0).astype(float)
     
     # Calculate domain coordinates in genomic context
     domain_table['domain_start'] = domain_table['start'] + domain_table['seq_from'] * 3
@@ -226,6 +285,8 @@ def main():
                        help="HMMER domtblout file")
     parser.add_argument("--proteins", "-p", required=True,
                        help="Protein FASTA from Prodigal")
+    parser.add_argument("--regions-fasta", default=None,
+                       help="Original input FASTA to propagate region metadata")
     parser.add_argument("--output", "-o", required=True,
                        help="Output CSV file for domain table")
     parser.add_argument("--evalue", "-e", type=float, default=1e-5,
@@ -243,17 +304,18 @@ def main():
         
         # Extract gene metadata
         genes_df = extract_gene_metadata(args.proteins)
+        regions_df = load_region_metadata(args.regions_fasta) if args.regions_fasta else None
         
         if len(domains_df) == 0:
-            print("⚠️  No significant domains found!")
+            print("[WARN]  No significant domains found!")
             print("   Check your HMMER results and E-value cutoff")
         
         # Build comprehensive domain table
-        domain_table = build_domain_table(domains_df, genes_df)
+        domain_table = build_domain_table(domains_df, genes_df, regions_df)
         
         # Save results
         domain_table.to_csv(args.output, index=False)
-        print(f"\n✅ Domain table saved to: {args.output}")
+        print(f"\n[OK] Domain table saved to: {args.output}")
         print(f"   Total domains: {len(domain_table)}")
         
         # Summary statistics
@@ -263,7 +325,7 @@ def main():
             print(f"   Regions with domains: {domain_table['region_id'].nunique()}")
         
     except Exception as e:
-        print(f"\n❌ Domain parsing failed: {e}")
+        print(f"\n[ERROR] Domain parsing failed: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":
