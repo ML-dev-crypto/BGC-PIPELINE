@@ -1,0 +1,79 @@
+========================================================================
+  BGC-QDR Research Ablation Report
+  Generated: 2026-06-13 15:26:55
+========================================================================
+
+── 1. Hardware & Environment ──────────────────────────────────────
+  CUDA available : True
+  GPU            : NVIDIA GeForce RTX 2050
+  PyTorch        : 2.6.0+cu124
+  PennyLane      : 0.44.0
+
+  Backend timing (50-sample subset):
+    default.qubit           175.7s  acc=0.750  auc=0.707
+    lightning.qubit      ERROR: Device <lightning.qubit device (wires=6) at 0x23fa028d950> does not support backprop with requested circuit.
+
+── 2. Stratified 5-Fold Cross-Validation ──────────────────────────
+  Dataset: 2636 MiBIG BGCs  active=2162  inactive=474
+
+  Model                            Accuracy        ROC-AUC         F1    Precision     Recall
+  ────────────────────────────────────────────────────────────────────────────────────────
+  LogisticRegression            0.726±0.018    0.872±0.008 0.804±0.017  0.968±0.009 0.689±0.028
+  MLP                           0.865±0.014    0.872±0.018 0.923±0.007  0.867±0.013 0.987±0.003
+  RandomForest                  0.780±0.026    0.892±0.009 0.850±0.020  0.957±0.004 0.766±0.031
+  XGBoost                       0.832±0.019    0.895±0.005 0.891±0.014  0.947±0.003 0.842±0.024
+
+── 3. Architecture Ablation (sorted by ROC-AUC) ─────────────────
+  Config           Params   PCA var   Accuracy    ROC-AUC    Time(s)
+  ────────────────────────────────────────────────────────────────────
+  4q × 3L              36  66.8%       0.787       0.737       255.2
+  4q × 4L              48  66.8%       0.775       0.735       305.6
+  6q × 3L              54  78.4%       0.787       0.735       354.7
+  6q × 4L              72  78.4%       0.775       0.732       438.1
+  8q × 3L              72  87.4%       0.762       0.724       558.1
+  8q × 4L              96  87.4%       0.787       0.715       592.3
+  8q × 2L              48  87.4%       0.825       0.673       315.4
+  4q × 2L              24  66.8%       0.825       0.669       184.3
+  6q × 2L              36  78.4%       0.825       0.500       251.6
+
+  → Best config: 4 qubits × 3 layers  (36 params)  AUC=0.737
+    Recommendation: use this config in paper Table 1
+
+── 4. Feature Importance (RandomForest, averaged over folds) ────
+  PP-binding                    0.16220 ± 0.01111
+  cluster_length_kb             0.14910 ± 0.00681
+  module_count                  0.12185 ± 0.00743
+  domain_entropy                0.09319 ± 0.00317
+  Condensation                  0.08448 ± 0.00546
+  PKS_AT                        0.07948 ± 0.00827
+  adh_short                     0.06020 ± 0.00460
+  Glycos_transf_1               0.04009 ± 0.00240
+  AMP-binding                   0.03675 ± 0.00087
+  tailoring_count               0.03564 ± 0.00130
+
+── 5. Recommendations for Paper ────────────────────────────────
+
+  CRITICAL (must fix before submission):
+  • Replace single-split results with 5-fold CV mean±std
+  • Report ROC-AUC as primary metric (not accuracy, due to 82% imbalance)
+  • Add statistical significance tests vs best classical baseline
+  • Add confusion matrices as supplementary figure
+
+  HIGH IMPACT:
+  • Use best qubit/layer config found in ablation (Section 3 above)
+  • Add LogisticRegression as baseline (reveals if problem is linearly separable)
+  • Report F1 score alongside AUC
+
+  MEDIUM IMPACT:
+  • Add domain entropy feature (captures BGC diversity)
+  • Add resistance gene count feature
+  • Add tailoring enzyme count (P450, glycosyltransferase, methyltransferase)
+
+  PIPELINE STRUCTURE FOR PAPER:
+  Recommended for IEEE TCBB / Bioinformatics:
+    QC → ORF Calling → Domain Annotation → Novelty Assessment → VQC Ranking
+  Graph reconstruction + GCF clustering → frame as future work
+  This is cleaner and more reviewable in 8–10 pages
+
+  Total ablation runtime: 3564.2s
+========================================================================

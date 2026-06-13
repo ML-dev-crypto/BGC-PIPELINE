@@ -1,0 +1,19 @@
+{
+  "cuda_available": true,
+  "gpu_name": "NVIDIA GeForce RTX 2050",
+  "torch_version": "2.6.0+cu124",
+  "pennylane_version": "0.44.0",
+  "benchmarks": [
+    {
+      "backend": "default.qubit",
+      "time_s": 175.66,
+      "acc": 0.75,
+      "auc": 0.7067,
+      "n_train": 50
+    },
+    {
+      "backend": "lightning.qubit",
+      "error": "Device <lightning.qubit device (wires=6) at 0x23fa028d950> does not support backprop with requested circuit."
+    }
+  ]
+}

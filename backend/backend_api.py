@@ -26,8 +26,10 @@ try:
     from sequence_qc import SequenceQC
     from novelty_assessment import NoveltyAssessor, load_sequences_from_fasta
     QC_AVAILABLE = True
+    print("✅ QC modules loaded successfully")
 except ImportError as e:
     print(f"⚠️  Warning: QC modules not available: {e}")
+    QC_AVAILABLE = False
     QC_AVAILABLE = False
 
 app = Flask(__name__)

@@ -1,0 +1,267 @@
+{
+  "n_folds": 5,
+  "models": {
+    "LogisticRegression": {
+      "metrics": {
+        "accuracy": {
+          "mean": 0.7257,
+          "std": 0.0179,
+          "ci_lo": 0.71,
+          "ci_hi": 0.7415
+        },
+        "precision": {
+          "mean": 0.9679,
+          "std": 0.0095,
+          "ci_lo": 0.9596,
+          "ci_hi": 0.9763
+        },
+        "recall": {
+          "mean": 0.6887,
+          "std": 0.0275,
+          "ci_lo": 0.6646,
+          "ci_hi": 0.7128
+        },
+        "f1": {
+          "mean": 0.8043,
+          "std": 0.0166,
+          "ci_lo": 0.7898,
+          "ci_hi": 0.8189
+        },
+        "roc_auc": {
+          "mean": 0.8717,
+          "std": 0.008,
+          "ci_lo": 0.8647,
+          "ci_hi": 0.8787
+        }
+      },
+      "avg_confusion_matrix": [
+        [
+          84.8,
+          10.0
+        ],
+        [
+          134.6,
+          297.8
+        ]
+      ],
+      "n_folds": 5
+    },
+    "RandomForest": {
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8255,
+          "std": 0.0236,
+          "ci_lo": 0.8049,
+          "ci_hi": 0.8461
+        },
+        "precision": {
+          "mean": 0.9492,
+          "std": 0.0059,
+          "ci_lo": 0.944,
+          "ci_hi": 0.9544
+        },
+        "recall": {
+          "mean": 0.8316,
+          "std": 0.0267,
+          "ci_lo": 0.8083,
+          "ci_hi": 0.855
+        },
+        "f1": {
+          "mean": 0.8864,
+          "std": 0.0165,
+          "ci_lo": 0.8719,
+          "ci_hi": 0.9009
+        },
+        "roc_auc": {
+          "mean": 0.8918,
+          "std": 0.0094,
+          "ci_lo": 0.8836,
+          "ci_hi": 0.9
+        }
+      },
+      "avg_confusion_matrix": [
+        [
+          75.6,
+          19.2
+        ],
+        [
+          72.8,
+          359.6
+        ]
+      ],
+      "n_folds": 5
+    },
+    "MLP": {
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8646,
+          "std": 0.0139,
+          "ci_lo": 0.8524,
+          "ci_hi": 0.8768
+        },
+        "precision": {
+          "mean": 0.8666,
+          "std": 0.0127,
+          "ci_lo": 0.8555,
+          "ci_hi": 0.8777
+        },
+        "recall": {
+          "mean": 0.987,
+          "std": 0.0031,
+          "ci_lo": 0.9843,
+          "ci_hi": 0.9898
+        },
+        "f1": {
+          "mean": 0.9229,
+          "std": 0.0074,
+          "ci_lo": 0.9164,
+          "ci_hi": 0.9294
+        },
+        "roc_auc": {
+          "mean": 0.8717,
+          "std": 0.0183,
+          "ci_lo": 0.8556,
+          "ci_hi": 0.8877
+        }
+      },
+      "avg_confusion_matrix": [
+        [
+          29.0,
+          65.8
+        ],
+        [
+          5.6,
+          426.8
+        ]
+      ],
+      "n_folds": 5
+    },
+    "XGBoost": {
+      "metrics": {
+        "accuracy": {
+          "mean": 0.8319,
+          "std": 0.0191,
+          "ci_lo": 0.8152,
+          "ci_hi": 0.8487
+        },
+        "precision": {
+          "mean": 0.9474,
+          "std": 0.0033,
+          "ci_lo": 0.9445,
+          "ci_hi": 0.9503
+        },
+        "recall": {
+          "mean": 0.8418,
+          "std": 0.0238,
+          "ci_lo": 0.8209,
+          "ci_hi": 0.8627
+        },
+        "f1": {
+          "mean": 0.8913,
+          "std": 0.0138,
+          "ci_lo": 0.8792,
+          "ci_hi": 0.9034
+        },
+        "roc_auc": {
+          "mean": 0.8948,
+          "std": 0.0054,
+          "ci_lo": 0.89,
+          "ci_hi": 0.8995
+        }
+      },
+      "avg_confusion_matrix": [
+        [
+          74.6,
+          20.2
+        ],
+        [
+          68.4,
+          364.0
+        ]
+      ],
+      "n_folds": 5
+    }
+  },
+  "feature_importance": {
+    "PP-binding": {
+      "mean": 0.1622,
+      "std": 0.01111
+    },
+    "cluster_length_kb": {
+      "mean": 0.1491,
+      "std": 0.00681
+    },
+    "module_count": {
+      "mean": 0.12185,
+      "std": 0.00743
+    },
+    "domain_entropy": {
+      "mean": 0.09319,
+      "std": 0.00317
+    },
+    "Condensation": {
+      "mean": 0.08448,
+      "std": 0.00546
+    },
+    "PKS_AT": {
+      "mean": 0.07948,
+      "std": 0.00827
+    },
+    "adh_short": {
+      "mean": 0.0602,
+      "std": 0.0046
+    },
+    "Glycos_transf_1": {
+      "mean": 0.04009,
+      "std": 0.0024
+    },
+    "AMP-binding": {
+      "mean": 0.03675,
+      "std": 0.00087
+    },
+    "tailoring_count": {
+      "mean": 0.03564,
+      "std": 0.0013
+    },
+    "p450": {
+      "mean": 0.03494,
+      "std": 0.00146
+    },
+    "RmlD_sub_bind": {
+      "mean": 0.02346,
+      "std": 0.00377
+    },
+    "itr_KS": {
+      "mean": 0.01949,
+      "std": 0.00152
+    },
+    "resistance_count": {
+      "mean": 0.01198,
+      "std": 0.00101
+    },
+    "Abhydrolase_6": {
+      "mean": 0.01049,
+      "std": 0.00088
+    },
+    "MGT": {
+      "mean": 0.01004,
+      "std": 0.00066
+    },
+    "ADH_zinc_N": {
+      "mean": 0.00968,
+      "std": 0.00096
+    },
+    "PKS_KS": {
+      "mean": 0.00652,
+      "std": 0.00114
+    },
+    "mod_KS": {
+      "mean": 0.00637,
+      "std": 0.0005
+    },
+    "hyb_KS": {
+      "mean": 0.00404,
+      "std": 0.00079
+    }
+  }
+}
