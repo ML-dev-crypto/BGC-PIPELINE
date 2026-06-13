@@ -37,7 +37,7 @@ async function fetchStats() {
 /**
  * Run BGC detection (Phase 1-2)
  */
-async function runDetection(file = null, useSample = false) {
+async function runDetection(file = null, useSample = false, excludeSynthetic = false) {
   try {
     state.isProcessing = true;
     showLoadingState('Detecting BGCs...');
@@ -47,6 +47,7 @@ async function runDetection(file = null, useSample = false) {
       formData.append('fasta_file', file);
     }
     formData.append('use_sample', useSample ? 'true' : 'false');
+    formData.append('exclude_synthetic', excludeSynthetic ? 'true' : 'false');
     
     const response = await fetch(`${API_BASE_URL}/detect`, {
       method: 'POST',
@@ -57,7 +58,13 @@ async function runDetection(file = null, useSample = false) {
     const data = await response.json();
     
     state.currentJobId = data.job_id;
-    showNotification(`Detection complete! Found ${data.bgc_count} BGCs`, 'success');
+    
+    // Show notification with QC info
+    let message = `Detection complete! Found ${data.bgc_count} BGCs`;
+    if (data.qc_summary && data.qc_summary.synthetic_excluded > 0) {
+      message += ` (${data.qc_summary.synthetic_excluded} synthetic excluded)`;
+    }
+    showNotification(message, 'success');
     
     return data;
   } catch (error) {
@@ -155,10 +162,10 @@ async function runRanking(jobId) {
 /**
  * Run complete pipeline
  */
-async function runCompletePipeline(file = null, useSample = false) {
+async function runCompletePipeline(file = null, useSample = false, excludeSynthetic = false) {
   try {
     // Phase 1-2: Detection
-    const detectionResult = await runDetection(file, useSample);
+    const detectionResult = await runDetection(file, useSample, excludeSynthetic);
     const jobId = detectionResult.job_id;
     
     // Phase 3: Reconstruction
@@ -226,6 +233,54 @@ function updateStatsDisplay(stats) {
  * Display results in a modal or results section
  */
 function displayResults(data) {
+  // Check for QC warnings
+  const qcWarnings = [];
+  if (data.sequence_qc && data.sequence_qc.overall_input_quality === 'poor') {
+    qcWarnings.push({
+      type: 'warning',
+      message: `Input quality is poor (${data.sequence_qc.pass_rate}% pass rate). Results may be less reliable.`
+    });
+  }
+  
+  // Check for manual review flags
+  const manualReviewCount = data.top_candidates.filter(c => c.requires_manual_review).length;
+  if (manualReviewCount > 0) {
+    qcWarnings.push({
+      type: 'info',
+      message: `${manualReviewCount} candidate(s) require manual review due to unknown classification.`
+    });
+  }
+  
+  // Build warnings HTML
+  const warningsHTML = qcWarnings.length > 0 ? `
+    <div class="qc-warnings">
+      ${qcWarnings.map(w => `
+        <div class="qc-warning qc-warning-${w.type}">
+          <span class="warning-icon">${w.type === 'warning' ? '⚠️' : 'ℹ️'}</span>
+          <span class="warning-text">${w.message}</span>
+        </div>
+      `).join('')}
+    </div>
+  ` : '';
+  
+  // Build score distribution sparkline
+  const scoreDistHTML = data.score_distribution ? `
+    <div class="score-distribution">
+      <div class="dist-label">Score Distribution</div>
+      <div class="dist-sparkline">
+        ${data.score_distribution.histogram_bins.map(bin => `
+          <div class="spark-bar" style="height: ${(bin.count / Math.max(...data.score_distribution.histogram_bins.map(b => b.count)) * 100)}%" 
+               title="${bin.range}: ${bin.count} candidates"></div>
+        `).join('')}
+      </div>
+      <div class="dist-stats">
+        <span>Min: ${data.score_distribution.min}</span>
+        <span>Mean: ${data.score_distribution.mean}</span>
+        <span>Max: ${data.score_distribution.max}</span>
+      </div>
+    </div>
+  ` : '';
+  
   const resultsHTML = `
     <div class="results-modal" id="resultsModal">
       <div class="results-content">
@@ -234,19 +289,33 @@ function displayResults(data) {
           <button class="close-btn" onclick="closeResults()">×</button>
         </div>
         
+        ${warningsHTML}
+        
         <div class="results-summary">
           <div class="summary-card">
             <div class="summary-label">Job ID</div>
             <div class="summary-value">${data.job_id}</div>
+            ${data.input_hash ? `<div class="summary-meta">Hash: ${data.input_hash}</div>` : ''}
           </div>
           <div class="summary-card">
             <div class="summary-label">VQC Accuracy</div>
             <div class="summary-value">${(data.vqc_accuracy * 100).toFixed(1)}%</div>
+            ${scoreDistHTML}
           </div>
           <div class="summary-card">
             <div class="summary-label">Top Candidates</div>
             <div class="summary-value">${data.top_candidates.length}</div>
+            <div class="summary-meta">${data.candidates_above_threshold} above threshold</div>
           </div>
+          ${data.sequence_qc ? `
+          <div class="summary-card">
+            <div class="summary-label">Input Quality</div>
+            <div class="summary-value quality-${data.sequence_qc.overall_input_quality || 'unknown'}">
+              ${(data.sequence_qc.overall_input_quality || 'unknown').toUpperCase()}
+            </div>
+            <div class="summary-meta">${data.sequence_qc.passed_sequences}/${data.sequence_qc.total_sequences} passed QC</div>
+          </div>
+          ` : ''}
         </div>
         
         <div class="results-table">
@@ -257,26 +326,61 @@ function displayResults(data) {
                 <th>BGC ID</th>
                 <th>Class</th>
                 <th>Score</th>
+                <th>Percentile</th>
                 <th>Novelty (%)</th>
+                <th>Completeness</th>
               </tr>
             </thead>
             <tbody>
               ${data.top_candidates.map(candidate => `
-                <tr>
+                <tr class="${candidate.requires_manual_review ? 'requires-review' : ''}">
                   <td><code>${candidate.bgc_id}</code></td>
-                  <td>${candidate.bgc_class}</td>
+                  <td>
+                    ${candidate.bgc_class}
+                    ${candidate.requires_manual_review ? '<span class="review-badge">⚠️ Review</span>' : ''}
+                  </td>
                   <td>
                     <div class="score-bar">
-                      <div class="score-fill" style="width: ${candidate.score * 100}%"></div>
+                      <div class="score-fill score-${candidate.confidence_level}" style="width: ${candidate.score * 100}%"></div>
                       <span class="score-text">${(candidate.score * 100).toFixed(1)}%</span>
                     </div>
                   </td>
+                  <td>${candidate.percentile_rank}%</td>
                   <td>${candidate.novelty.toFixed(2)}%</td>
+                  <td>
+                    <span class="completeness-badge completeness-${candidate.completeness >= 0.8 ? 'high' : candidate.completeness >= 0.5 ? 'medium' : 'low'}">
+                      ${(candidate.completeness * 100).toFixed(0)}%
+                    </span>
+                  </td>
                 </tr>
               `).join('')}
             </tbody>
           </table>
         </div>
+        
+        ${data.sequence_qc ? `
+        <div class="qc-details">
+          <h3>Sequence Quality Details</h3>
+          <div class="qc-grid">
+            <div class="qc-stat">
+              <div class="qc-stat-label">Total Contigs</div>
+              <div class="qc-stat-value">${data.sequence_qc.total_sequences}</div>
+            </div>
+            <div class="qc-stat">
+              <div class="qc-stat-label">Passed QC</div>
+              <div class="qc-stat-value">${data.sequence_qc.passed_sequences}</div>
+            </div>
+            <div class="qc-stat">
+              <div class="qc-stat-label">Failed QC</div>
+              <div class="qc-stat-value">${data.sequence_qc.failed_sequences}</div>
+            </div>
+            <div class="qc-stat">
+              <div class="qc-stat-label">Pass Rate</div>
+              <div class="qc-stat-value">${data.sequence_qc.pass_rate}%</div>
+            </div>
+          </div>
+        </div>
+        ` : ''}
         
         <div class="results-actions">
           <button class="btn-primary" onclick="downloadResults('${data.job_id}')">
@@ -286,6 +390,12 @@ function displayResults(data) {
             Run New Analysis
           </button>
         </div>
+        
+        ${data.input_hash ? `
+        <div class="results-footer">
+          <small>Input Hash: <code>${data.input_hash}</code> | Processing Time: ${data.processing_time_seconds || 'N/A'}s ${data.cached ? '(cached)' : ''}</small>
+        </div>
+        ` : ''}
       </div>
     </div>
   `;
@@ -388,6 +498,17 @@ function showUploadModal() {
                 <span class="file-info">Supported: .fasta, .fa, .fna (max 100MB)</span>
               </div>
             </div>
+            <div class="qc-options" style="margin-top: 15px;">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" id="excludeSynthetic" checked style="width: 18px; height: 18px; cursor: pointer;">
+                <span style="font-size: 14px; color: #e0e0e0;">
+                  Exclude synthetic/marker sequences (recommended for real analysis)
+                </span>
+              </label>
+              <p style="font-size: 12px; color: #888; margin: 8px 0 0 26px;">
+                Automatically detects and removes synthetic BGC markers to prevent inflated counts
+              </p>
+            </div>
             <button class="btn-primary" onclick="uploadAndAnalyse()">
               Upload & Analyse
             </button>
@@ -478,16 +599,19 @@ async function uploadAndAnalyse() {
   }
   
   const file = fileInput.files[0];
+  const excludeSynthetic = document.getElementById('excludeSynthetic')?.checked || false;
   closeUploadModal();
-  await runCompletePipeline(file, false);
+  await runCompletePipeline(file, false, excludeSynthetic);
 }
 
 /**
  * Analyse sample data
  */
 async function analyseSample() {
+  const excludeSynthetic = document.getElementById('excludeSynthetic')?.checked || false;
   closeUploadModal();
-  await runCompletePipeline(null, true);
+  await runCompletePipeline(null, true, excludeSynthetic);
+}
 }
 
 // ============================================================================

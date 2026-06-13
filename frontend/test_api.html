@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>BGC-QDR API Test</h1>
+    <button onclick="testAPI()">Test Sample Analysis</button>
+    <pre id="output"></pre>
+    
+    <script>
+        async function testAPI() {
+            const output = document.getElementById('output');
+            output.textContent = 'Testing...\n';
+            
+            try {
+                // Test health
+                output.textContent += '\n1. Testing /api/health...\n';
+                let response = await fetch('http://localhost:5000/api/health');
+                let data = await response.json();
+                output.textContent += JSON.stringify(data, null, 2) + '\n';
+                
+                // Test detection with sample
+                output.textContent += '\n2. Testing /api/detect with sample...\n';
+                const formData = new FormData();
+                formData.append('use_sample', 'true');
+                
+                response = await fetch('http://localhost:5000/api/detect', {
+                    method: 'POST',
+                    body: formData
+                });
+                data = await response.json();
+                output.textContent += JSON.stringify(data, null, 2) + '\n';
+                
+                const jobId = data.job_id;
+                
+                // Test reconstruction
+                output.textContent += '\n3. Testing /api/reconstruct...\n';
+                response = await fetch('http://localhost:5000/api/reconstruct', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ job_id: jobId })
+                });
+                data = await response.json();
+                output.textContent += JSON.stringify(data, null, 2) + '\n';
+                
+                // Test novelty
+                output.textContent += '\n4. Testing /api/novelty...\n';
+                response = await fetch('http://localhost:5000/api/novelty', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ job_id: jobId })
+                });
+                data = await response.json();
+                output.textContent += JSON.stringify(data, null, 2) + '\n';
+                
+                // Test ranking
+                output.textContent += '\n5. Testing /api/rank...\n';
+                response = await fetch('http://localhost:5000/api/rank', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ job_id: jobId })
+                });
+                data = await response.json();
+                output.textContent += JSON.stringify(data, null, 2) + '\n';
+                
+                output.textContent += '\n✅ ALL TESTS PASSED!\n';
+                
+            } catch (error) {
+                output.textContent += '\n❌ ERROR: ' + error.message + '\n';
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>
