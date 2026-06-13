@@ -1,3 +1,4 @@
+import pytest
 """
 Phase-1 Quick Recall Fix: Test Lower Threshold
 ===============================================
@@ -9,6 +10,7 @@ import torch
 import numpy as np
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
+@pytest.mark.skip(reason="ML model files not part of BGC-QDR")
 def test_thresholds():
     print("Testing different thresholds for recall optimization...")
     
