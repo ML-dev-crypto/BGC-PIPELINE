@@ -1,0 +1,426 @@
+{
+  "input_file": "uploads\\job_1778267031.fasta",
+  "input_hash": "5ecbd1bf8424b020",
+  "total_sequences": 16,
+  "passed_sequences": 0,
+  "failed_sequences": 16,
+  "pass_rate": 0.0,
+  "failure_reasons": {
+    "complexity": 16,
+    "repeat_pattern": 11,
+    "gc_content": 3,
+    "n_content": 1
+  },
+  "qc_thresholds": {
+    "min_length": 500,
+    "max_n_percent": 10.0,
+    "min_gc_percent": 20.0,
+    "max_gc_percent": 80.0,
+    "max_homopolymer_run": 15,
+    "min_complexity_score": 0.3
+  },
+  "per_sequence_results": [
+    {
+      "seq_id": "contig_001|sample:rhizosphere_soil|location:amazon_basin|depth:0-5cm|organism:uncultured_bacterium",
+      "length": 567,
+      "gc_content": 49.91,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 1,
+      "complexity_score": -0.5,
+      "is_repeat": true,
+      "repeat_pattern": "TAGC",
+      "passed": false,
+      "failures": [
+        "complexity",
+        "repeat_pattern"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": false
+      }
+    },
+    {
+      "seq_id": "BGC_NRPS_001|type:nonribosomal_peptide_synthetase|organism:Streptomyces_sp_env|completeness:full",
+      "length": 1474,
+      "gc_content": 98.44,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 3,
+      "complexity_score": -0.557,
+      "is_repeat": true,
+      "repeat_pattern": "GCG",
+      "passed": false,
+      "failures": [
+        "gc_content",
+        "complexity",
+        "repeat_pattern"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": false,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": false
+      }
+    },
+    {
+      "seq_id": "contig_002|sample:rhizosphere_soil|location:amazon_basin|depth:5-10cm|gc_content:61.2",
+      "length": 640,
+      "gc_content": 50.0,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 1,
+      "complexity_score": -0.5,
+      "is_repeat": true,
+      "repeat_pattern": "CGTA",
+      "passed": false,
+      "failures": [
+        "complexity",
+        "repeat_pattern"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": false
+      }
+    },
+    {
+      "seq_id": "BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial",
+      "length": 880,
+      "gc_content": 49.77,
+      "n_content": 0.34,
+      "homopolymer_base": "A",
+      "homopolymer_length": 2,
+      "complexity_score": -0.384,
+      "is_repeat": false,
+      "repeat_pattern": "None",
+      "passed": false,
+      "failures": [
+        "complexity"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": true
+      }
+    },
+    {
+      "seq_id": "contig_003|sample:deep_ocean_sediment|location:mariana_trench_adjacent|depth:500m|quality:medium",
+      "length": 640,
+      "gc_content": 50.0,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 2,
+      "complexity_score": -0.354,
+      "is_repeat": false,
+      "repeat_pattern": "None",
+      "passed": false,
+      "failures": [
+        "complexity"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": true
+      }
+    },
+    {
+      "seq_id": "BGC_lantipeptide_003|type:class_II_lantipeptide|organism:marine_Firmicutes_env|completeness:full",
+      "length": 979,
+      "gc_content": 33.2,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 3,
+      "complexity_score": -0.36,
+      "is_repeat": false,
+      "repeat_pattern": "None",
+      "passed": false,
+      "failures": [
+        "complexity"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": true
+      }
+    },
+    {
+      "seq_id": "contig_004|sample:peat_bog|location:siberia|depth:15cm|quality:poor|notes:low_biomass",
+      "length": 656,
+      "gc_content": 49.24,
+      "n_content": 1.37,
+      "homopolymer_base": "A",
+      "homopolymer_length": 1,
+      "complexity_score": -0.486,
+      "is_repeat": true,
+      "repeat_pattern": "ATCG",
+      "passed": false,
+      "failures": [
+        "complexity",
+        "repeat_pattern"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": false
+      }
+    },
+    {
+      "seq_id": "BGC_T3PKS_004|type:type_III_polyketide_synthase|organism:uncultured_Cyanobacteria|completeness:full",
+      "length": 1065,
+      "gc_content": 33.33,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 2,
+      "complexity_score": -0.573,
+      "is_repeat": true,
+      "repeat_pattern": "CAA",
+      "passed": false,
+      "failures": [
+        "complexity",
+        "repeat_pattern"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": false
+      }
+    },
+    {
+      "seq_id": "contig_005|sample:forest_litter|location:borneo_rainforest|depth:surface|gc_content:48.7",
+      "length": 672,
+      "gc_content": 0.0,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 1,
+      "complexity_score": -0.707,
+      "is_repeat": true,
+      "repeat_pattern": "TA",
+      "passed": false,
+      "failures": [
+        "gc_content",
+        "complexity",
+        "repeat_pattern"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": false,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": false
+      }
+    },
+    {
+      "seq_id": "BGC_PKSNRPS_hybrid_005|type:PKS_NRPS_hybrid|organism:Pseudomonas_sp_env|completeness:full|predicted_product:lipopeptide",
+      "length": 1556,
+      "gc_content": 66.45,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 2,
+      "complexity_score": -0.574,
+      "is_repeat": true,
+      "repeat_pattern": "AGC",
+      "passed": false,
+      "failures": [
+        "complexity",
+        "repeat_pattern"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": false
+      }
+    },
+    {
+      "seq_id": "contig_006|sample:hot_spring_mat|location:yellowstone_adjacent|temp:68C|pH:4.2|quality:good",
+      "length": 572,
+      "gc_content": 50.35,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 1,
+      "complexity_score": -0.493,
+      "is_repeat": true,
+      "repeat_pattern": "ATCG",
+      "passed": false,
+      "failures": [
+        "complexity",
+        "repeat_pattern"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": false
+      }
+    },
+    {
+      "seq_id": "BGC_ectoine_006|type:ectoine_biosynthesis|organism:thermophilic_Thermus_sp|completeness:full|predicted_product:ectoine",
+      "length": 1256,
+      "gc_content": 33.28,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 2,
+      "complexity_score": -0.575,
+      "is_repeat": true,
+      "repeat_pattern": "GAT",
+      "passed": false,
+      "failures": [
+        "complexity",
+        "repeat_pattern"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": false
+      }
+    },
+    {
+      "seq_id": "contig_007|sample:mangrove_sediment|location:sundarbans|depth:3cm|quality:medium",
+      "length": 560,
+      "gc_content": 50.0,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 2,
+      "complexity_score": -0.354,
+      "is_repeat": false,
+      "repeat_pattern": "None",
+      "passed": false,
+      "failures": [
+        "complexity"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": true
+      }
+    },
+    {
+      "seq_id": "BGC_betalactone_007|type:betalactone_synthetase|organism:Burkholderiales_env|completeness:partial|predicted_product:obafluorin_analog",
+      "length": 800,
+      "gc_content": 33.25,
+      "n_content": 0.5,
+      "homopolymer_base": "T",
+      "homopolymer_length": 2,
+      "complexity_score": -0.568,
+      "is_repeat": true,
+      "repeat_pattern": "CTT",
+      "passed": false,
+      "failures": [
+        "complexity",
+        "repeat_pattern"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": false
+      }
+    },
+    {
+      "seq_id": "contig_008|sample:glacier_meltwater|location:greenland|quality:very_poor|notes:high_contamination",
+      "length": 653,
+      "gc_content": 11.64,
+      "n_content": 75.8,
+      "homopolymer_base": "A",
+      "homopolymer_length": 1,
+      "complexity_score": -0.691,
+      "is_repeat": true,
+      "repeat_pattern": "NN",
+      "passed": false,
+      "failures": [
+        "n_content",
+        "gc_content",
+        "complexity",
+        "repeat_pattern"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": false,
+        "gc_content": false,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": false
+      }
+    },
+    {
+      "seq_id": "BGC_aminoglycoside_008|type:aminoglycoside_biosynthesis|organism:Micromonospora_sp_env|completeness:full",
+      "length": 1062,
+      "gc_content": 33.15,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 3,
+      "complexity_score": -0.404,
+      "is_repeat": false,
+      "repeat_pattern": "None",
+      "passed": false,
+      "failures": [
+        "complexity"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": true
+      }
+    }
+  ],
+  "passed_seq_ids": [],
+  "failed_seq_ids": [
+    "contig_001|sample:rhizosphere_soil|location:amazon_basin|depth:0-5cm|organism:uncultured_bacterium",
+    "BGC_NRPS_001|type:nonribosomal_peptide_synthetase|organism:Streptomyces_sp_env|completeness:full",
+    "contig_002|sample:rhizosphere_soil|location:amazon_basin|depth:5-10cm|gc_content:61.2",
+    "BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial",
+    "contig_003|sample:deep_ocean_sediment|location:mariana_trench_adjacent|depth:500m|quality:medium",
+    "BGC_lantipeptide_003|type:class_II_lantipeptide|organism:marine_Firmicutes_env|completeness:full",
+    "contig_004|sample:peat_bog|location:siberia|depth:15cm|quality:poor|notes:low_biomass",
+    "BGC_T3PKS_004|type:type_III_polyketide_synthase|organism:uncultured_Cyanobacteria|completeness:full",
+    "contig_005|sample:forest_litter|location:borneo_rainforest|depth:surface|gc_content:48.7",
+    "BGC_PKSNRPS_hybrid_005|type:PKS_NRPS_hybrid|organism:Pseudomonas_sp_env|completeness:full|predicted_product:lipopeptide",
+    "contig_006|sample:hot_spring_mat|location:yellowstone_adjacent|temp:68C|pH:4.2|quality:good",
+    "BGC_ectoine_006|type:ectoine_biosynthesis|organism:thermophilic_Thermus_sp|completeness:full|predicted_product:ectoine",
+    "contig_007|sample:mangrove_sediment|location:sundarbans|depth:3cm|quality:medium",
+    "BGC_betalactone_007|type:betalactone_synthetase|organism:Burkholderiales_env|completeness:partial|predicted_product:obafluorin_analog",
+    "contig_008|sample:glacier_meltwater|location:greenland|quality:very_poor|notes:high_contamination",
+    "BGC_aminoglycoside_008|type:aminoglycoside_biosynthesis|organism:Micromonospora_sp_env|completeness:full"
+  ]
+}

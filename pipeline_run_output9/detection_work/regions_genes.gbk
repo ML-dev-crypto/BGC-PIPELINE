@@ -1,0 +1,13 @@
+DEFINITION  seqnum=1;seqlen=3371;seqhdr="AF016297.1 Rattus norvegicus neuropilin-2 mRNA, complete cds";gc_cont=57.30;transl_table=11;uses_sd=1
+FEATURES             Location/Qualifiers
+     CDS             312..3089
+                     /note=";gc_cont=0.541;tscore=3.83;"
+//
+DEFINITION  seqnum=2;seqlen=895;seqhdr="AY035337.1 Liriomyza huidobrensis isolate TLH-27 elongation factor 1 alpha (EF-1a) gene, EF-1a-F1 allele, partial cds";gc_cont=40.00;transl_table=4;uses_sd=0
+FEATURES             Location/Qualifiers
+     CDS             <2..>895
+                     /note=";gc_cont=0.453;tscore=1.61;"
+//
+DEFINITION  seqnum=3;seqlen=1416;seqhdr="AJ007800.1 Asticcacaulis excentricus 16S rRNA gene";gc_cont=56.30;transl_table=11;uses_sd=0
+FEATURES             Location/Qualifiers
+//

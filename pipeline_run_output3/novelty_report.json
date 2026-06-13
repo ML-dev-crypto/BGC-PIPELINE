@@ -1,0 +1,74 @@
+{
+  "input_hash": "ba2de4f1dceda0e4",
+  "mibig_version": "4.0",
+  "mibig_size": 2636,
+  "total_sequences": 8,
+  "novel_count": 8,
+  "novel_threshold": 40.0,
+  "novelty_percentage": 100.0,
+  "average_novelty": 45.27,
+  "average_confidence": 0.71,
+  "novelty_distribution": {
+    "high_novelty_70plus": 0,
+    "medium_novelty_40to70": 8,
+    "low_novelty_below40": 0
+  },
+  "per_sequence_novelty": [
+    {
+      "seq_id": "BGC0000001_4",
+      "novelty_percentage": 48.73,
+      "confidence": 0.705,
+      "length": 889,
+      "gc_content": 9.56
+    },
+    {
+      "seq_id": "BGC0000001_7",
+      "novelty_percentage": 42.8,
+      "confidence": 0.704,
+      "length": 619,
+      "gc_content": 12.6
+    },
+    {
+      "seq_id": "BGC0000001_9",
+      "novelty_percentage": 45.92,
+      "confidence": 0.704,
+      "length": 622,
+      "gc_content": 6.27
+    },
+    {
+      "seq_id": "BGC0000001_13",
+      "novelty_percentage": 45.17,
+      "confidence": 0.735,
+      "length": 5781,
+      "gc_content": 9.65
+    },
+    {
+      "seq_id": "BGC0000001_14",
+      "novelty_percentage": 50.7,
+      "confidence": 0.722,
+      "length": 3645,
+      "gc_content": 10.51
+    },
+    {
+      "seq_id": "BGC0000001_15",
+      "novelty_percentage": 41.25,
+      "confidence": 0.706,
+      "length": 992,
+      "gc_content": 9.27
+    },
+    {
+      "seq_id": "BGC0000001_19",
+      "novelty_percentage": 42.43,
+      "confidence": 0.703,
+      "length": 538,
+      "gc_content": 8.36
+    },
+    {
+      "seq_id": "BGC0000001_22",
+      "novelty_percentage": 45.2,
+      "confidence": 0.703,
+      "length": 539,
+      "gc_content": 9.65
+    }
+  ]
+}

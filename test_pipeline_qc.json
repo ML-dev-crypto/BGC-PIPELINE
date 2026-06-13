@@ -1,0 +1,35 @@
+{
+  "input_file": "validation\\validation_test_BGC0000037.fasta",
+  "total_contigs": 1,
+  "passed": 1,
+  "failed": 0,
+  "pass_rate": 100.0,
+  "fail_rate": 0.0,
+  "failure_reasons": {},
+  "sequence_origins": {
+    "unknown": 1
+  },
+  "qc_thresholds": {
+    "min_length_bp": 500,
+    "max_n_percent": 10.0,
+    "min_entropy_bits": 1.5,
+    "entropy_window_size_bp": 100,
+    "abort_threshold_percent": 80.0
+  },
+  "per_contig_results": [
+    {
+      "contig_id": "BGC0000037_0",
+      "length": 2517,
+      "n_content": 3.06,
+      "min_entropy": 3.59,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    }
+  ]
+}

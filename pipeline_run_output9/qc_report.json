@@ -1,0 +1,63 @@
+{
+  "input_file": "real_bgcs.fasta",
+  "total_contigs": 3,
+  "passed": 3,
+  "failed": 0,
+  "pass_rate": 100.0,
+  "fail_rate": 0.0,
+  "failure_reasons": {},
+  "sequence_origins": {
+    "unknown": 3
+  },
+  "qc_thresholds": {
+    "min_length_bp": 500,
+    "max_n_percent": 10.0,
+    "min_entropy_bits": 1.5,
+    "entropy_window_size_bp": 100,
+    "abort_threshold_percent": 80.0
+  },
+  "per_contig_results": [
+    {
+      "contig_id": "AF016297.1",
+      "length": 3371,
+      "n_content": 0.0,
+      "min_entropy": 1.823,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "AY035337.1",
+      "length": 895,
+      "n_content": 0.0,
+      "min_entropy": 1.922,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "AJ007800.1",
+      "length": 1416,
+      "n_content": 0.0,
+      "min_entropy": 1.918,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    }
+  ]
+}

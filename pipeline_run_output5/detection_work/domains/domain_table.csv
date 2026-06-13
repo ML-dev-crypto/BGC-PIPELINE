@@ -1,0 +1,10 @@
+target_name,query_name,domain_type,evalue,score,seq_from,seq_to,gene_id,region_id,start,end,strand,length,partial,has_start_codon,has_stop_codon,n_content_pct,domain_start,domain_end
+BGC0000001_13_1,placeholder,OTHER,1.0,0.0,1,646,BGC0000001_13_1,BGC0000001_13,3,1940,1,1938,,False,False,1.49,6,1941
+BGC0000001_13_2,placeholder,OTHER,1.0,0.0,1,1328,BGC0000001_13_2,BGC0000001_13,1797,5780,-1,3984,,False,False,1.49,1800,5781
+BGC0000001_14_1,placeholder,OTHER,1.0,0.0,1,1215,BGC0000001_14_1,BGC0000001_14,1,3645,1,3645,,False,False,0.82,4,3646
+BGC0000001_15_1,placeholder,OTHER,1.0,0.0,1,330,BGC0000001_15_1,BGC0000001_15,3,992,-1,990,,False,False,1.11,6,993
+BGC0000001_19_1,placeholder,OTHER,1.0,0.0,1,179,BGC0000001_19_1,BGC0000001_19,2,538,-1,537,,False,False,1.86,5,539
+BGC0000001_22_1,placeholder,OTHER,1.0,0.0,1,179,BGC0000001_22_1,BGC0000001_22,2,538,-1,537,,False,False,0.19,5,539
+BGC0000001_4_1,placeholder,OTHER,1.0,0.0,1,296,BGC0000001_4_1,BGC0000001_4,2,889,-1,888,,False,False,0.79,5,890
+BGC0000001_7_1,placeholder,OTHER,1.0,0.0,1,206,BGC0000001_7_1,BGC0000001_7,2,619,-1,618,,False,False,2.91,5,620
+BGC0000001_9_1,placeholder,OTHER,1.0,0.0,1,207,BGC0000001_9_1,BGC0000001_9,2,622,-1,621,,False,False,1.77,5,623

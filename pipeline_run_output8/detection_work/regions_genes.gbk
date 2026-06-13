@@ -1,0 +1,10 @@
+DEFINITION  seqnum=1;seqlen=880;seqhdr="BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial";gc_cont=47.90;transl_table=11;uses_sd=0
+FEATURES             Location/Qualifiers
+     CDS             <3..>878
+                     /note=";gc_cont=0.501;tscore=1.61;"
+//
+DEFINITION  seqnum=2;seqlen=979;seqhdr="BGC_lantipeptide_003|type:class_II_lantipeptide|organism:marine_Firmicutes_env|completeness:full";gc_cont=32.40;transl_table=11;uses_sd=1
+FEATURES             Location/Qualifiers
+     CDS             <1..>978
+                     /note=";gc_cont=0.332;tscore=1.61;"
+//

@@ -1,0 +1,7 @@
+{
+  "status": "prodigal_failed",
+  "total_orfs_predicted": 0,
+  "input_hash": "14dca2f7ac05289a",
+  "proteins_faa": null,
+  "error": "Command '['wsl', '--', 'prodigal', '-i', '/mnt/d/web.dv/pipeline_run_output4/input_filtered.fasta', '-a', '/mnt/d/web.dv/pipeline_run_output4/detection_work/regions_proteins.faa', '-d', '/mnt/d/web.dv/pipeline_run_output4/detection_work/regions_nucleotides.fna', '-o', '/mnt/d/web.dv/pipeline_run_output4/detection_work/regions_genes.gbk', '-p', 'meta', '-q']' returned non-zero exit status 4294967295."
+}

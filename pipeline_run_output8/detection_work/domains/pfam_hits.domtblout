@@ -1,0 +1,19 @@
+#                                                                                                                                                      --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord
+# target name        accession   tlen query name                                                                                     accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+#------------------- ---------- -----                                                                           -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------
+Bflower_2            PF21785.4    111 BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial_1 -            292   5.7e-15   55.8  40.5   1   4   4.9e-07    0.0068   17.0   4.4    35    95     5    65     1    74 0.38 5-fold beta-flower protein
+Bflower_2            PF21785.4    111 BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial_1 -            292   5.7e-15   55.8  40.5   2   4   1.1e-08   0.00014   22.4   9.0     4    96    62   154    60   162 0.58 5-fold beta-flower protein
+Bflower_2            PF21785.4    111 BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial_1 -            292   5.7e-15   55.8  40.5   3   4   1.9e-08   0.00026   21.6  10.9     4    96   134   218   123   235 0.43 5-fold beta-flower protein
+Bflower_2            PF21785.4    111 BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial_1 -            292   5.7e-15   55.8  40.5   4   4   1.3e-07    0.0017   18.9   6.7     3    85   205   288   203   292 0.88 5-fold beta-flower protein
+Gp5_trimer_C         PF22178.4    112 BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial_1 -            292   4.5e-09   37.1  64.5   1   2   4.1e-06     0.057   14.2  12.6    34   107     8    81     2    86 0.67 Bacteriophage T4 gp5 C-terminal trimerisation domain
+Gp5_trimer_C         PF22178.4    112 BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial_1 -            292   4.5e-09   37.1  64.5   2   2   8.1e-06      0.11   13.2  14.1    33   104   143   214   135   222 0.50 Bacteriophage T4 gp5 C-terminal trimerisation domain
+#
+# Program:         hmmscan
+# Version:         3.4 (Aug 2023)
+# Pipeline mode:   SCAN
+# Query file:      /root/bgc_work/hmmscan_work/query_proteins.faa
+# Target file:     /root/bgc_work/pfam_data/Pfam-A.hmm
+# Option settings: hmmscan --domtblout /root/bgc_work/hmmscan_work/pfam_hits.domtblout --noali -E 1e-5 --domE 1e-5 --cpu 4 /root/bgc_work/pfam_data/Pfam-A.hmm /root/bgc_work/hmmscan_work/query_proteins.faa 
+# Current dir:     /mnt/d/web.dv
+# Date:            Fri Jun 12 10:30:37 2026
+# [ok]

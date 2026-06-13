@@ -1,0 +1,471 @@
+{
+  "input_file": "validation\\validation_test_BGC0000001.fasta",
+  "total_contigs": 29,
+  "passed": 8,
+  "failed": 21,
+  "pass_rate": 27.6,
+  "fail_rate": 72.4,
+  "failure_reasons": {
+    "too_short": 21
+  },
+  "sequence_origins": {
+    "unknown": 29
+  },
+  "qc_thresholds": {
+    "min_length_bp": 500,
+    "max_n_percent": 10.0,
+    "min_entropy_bits": 1.5,
+    "entropy_window_size_bp": 100,
+    "abort_threshold_percent": 80.0
+  },
+  "per_contig_results": [
+    {
+      "contig_id": "BGC0000001_0",
+      "length": 360,
+      "n_content": 0.56,
+      "min_entropy": 3.747,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_360bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_1",
+      "length": 208,
+      "n_content": 1.92,
+      "min_entropy": 3.863,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_208bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_2",
+      "length": 248,
+      "n_content": 2.42,
+      "min_entropy": 3.591,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_248bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_3",
+      "length": 396,
+      "n_content": 1.52,
+      "min_entropy": 3.676,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_396bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_4",
+      "length": 889,
+      "n_content": 0.79,
+      "min_entropy": 3.225,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_5",
+      "length": 252,
+      "n_content": 0.79,
+      "min_entropy": 3.464,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_252bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_6",
+      "length": 141,
+      "n_content": 1.42,
+      "min_entropy": 3.9,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_141bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_7",
+      "length": 619,
+      "n_content": 2.91,
+      "min_entropy": 3.439,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_8",
+      "length": 341,
+      "n_content": 1.76,
+      "min_entropy": 3.507,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_341bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_9",
+      "length": 622,
+      "n_content": 1.77,
+      "min_entropy": 3.431,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_10",
+      "length": 78,
+      "n_content": 0.0,
+      "min_entropy": 3.689,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_78bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_11",
+      "length": 251,
+      "n_content": 1.99,
+      "min_entropy": 3.519,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_251bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_12",
+      "length": 355,
+      "n_content": 1.41,
+      "min_entropy": 3.655,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_355bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_13",
+      "length": 5781,
+      "n_content": 1.49,
+      "min_entropy": 3.169,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_14",
+      "length": 3645,
+      "n_content": 0.82,
+      "min_entropy": 3.122,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_15",
+      "length": 992,
+      "n_content": 1.11,
+      "min_entropy": 3.354,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_16",
+      "length": 230,
+      "n_content": 3.48,
+      "min_entropy": 3.585,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_230bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_17",
+      "length": 475,
+      "n_content": 0.84,
+      "min_entropy": 3.373,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_475bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_18",
+      "length": 335,
+      "n_content": 1.79,
+      "min_entropy": 3.554,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_335bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_19",
+      "length": 538,
+      "n_content": 1.86,
+      "min_entropy": 3.682,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_20",
+      "length": 311,
+      "n_content": 0.32,
+      "min_entropy": 3.428,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_311bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_21",
+      "length": 283,
+      "n_content": 0.71,
+      "min_entropy": 3.388,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_283bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_22",
+      "length": 539,
+      "n_content": 0.19,
+      "min_entropy": 3.449,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_23",
+      "length": 395,
+      "n_content": 0.76,
+      "min_entropy": 3.296,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_395bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_24",
+      "length": 83,
+      "n_content": 2.41,
+      "min_entropy": 3.834,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_83bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_25",
+      "length": 192,
+      "n_content": 0.0,
+      "min_entropy": 3.61,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_192bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_26",
+      "length": 298,
+      "n_content": 0.34,
+      "min_entropy": 3.562,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_298bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_27",
+      "length": 302,
+      "n_content": 0.66,
+      "min_entropy": 3.199,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_302bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC0000001_28",
+      "length": 197,
+      "n_content": 1.02,
+      "min_entropy": 3.503,
+      "sequence_origin": "unknown",
+      "passed": false,
+      "failure_reasons": [
+        "too_short_197bp"
+      ],
+      "checks": {
+        "length": false,
+        "n_content": true,
+        "complexity": true
+      }
+    }
+  ]
+}

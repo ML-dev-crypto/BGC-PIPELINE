@@ -1,0 +1,42 @@
+{
+  "status": "completed",
+  "sequences_input": 29,
+  "bgc_count": 0,
+  "steps": [
+    {
+      "step": "input_qc",
+      "status": "success"
+    },
+    {
+      "step": "orf_calling",
+      "status": "prodigal_failed"
+    },
+    {
+      "step": "domain_annotation",
+      "status": "success"
+    },
+    {
+      "step": "bgc_classification",
+      "status": "success"
+    },
+    {
+      "step": "novelty_assessment",
+      "status": "success"
+    },
+    {
+      "step": "vqc_ranking",
+      "status": "api_only"
+    }
+  ],
+  "duration_seconds": 15.86,
+  "detection_meta": {
+    "bgc_count": 0,
+    "bgc_log": "pipeline_run_output4\\detection_work\\bgc_classification.log.json",
+    "bgc_csv": "pipeline_run_output4\\detection_work\\bgc_candidates.csv",
+    "orf_log": "pipeline_run_output4\\detection_work\\orf_calling.log.json",
+    "domain_table": "pipeline_run_output4\\detection_work\\domains\\domain_table.csv",
+    "detection_status": "completed",
+    "detection_error": null,
+    "detection_warning": "ORF calling skipped: Command '['wsl', '--', 'prodigal', '-i', '/mnt/d/web.dv/pipeline_run_output4/input_filtered.fasta', '-a', '/mnt/d/web.dv/pipeline_run_output4/detection_work/regions_proteins.faa', '-d', '/mnt/d/web.dv/pipeline_run_output4/detection_work/regions_nucleotides.fna', '-o', '/mnt/d/web.dv/pipeline_run_output4/detection_work/regions_genes.gbk', '-p', 'meta', '-q']' returned non-zero exit status 4294967295."
+  }
+}

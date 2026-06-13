@@ -1,0 +1,42 @@
+DEFINITION  seqnum=1;seqlen=889;seqhdr="BGC0000001_4";gc_cont=30.50;transl_table=11;uses_sd=1
+FEATURES             Location/Qualifiers
+     CDS             complement(<2..>889)
+                     /note=";gc_cont=0.752;tscore=1.61;"
+//
+DEFINITION  seqnum=2;seqlen=619;seqhdr="BGC0000001_7";gc_cont=30.50;transl_table=11;uses_sd=1
+FEATURES             Location/Qualifiers
+     CDS             complement(<2..>619)
+                     /note=";gc_cont=0.811;tscore=1.61;"
+//
+DEFINITION  seqnum=3;seqlen=622;seqhdr="BGC0000001_9";gc_cont=30.50;transl_table=11;uses_sd=1
+FEATURES             Location/Qualifiers
+     CDS             complement(<2..>622)
+                     /note=";gc_cont=0.813;tscore=1.61;"
+//
+DEFINITION  seqnum=4;seqlen=5781;seqhdr="BGC0000001_13";gc_cont=30.50;transl_table=11;uses_sd=1
+FEATURES             Location/Qualifiers
+     CDS             <3..1940
+                     /note=";gc_cont=0.764;tscore=3.22;"
+     CDS             complement(1797..>5780)
+                     /note=";gc_cont=0.761;tscore=3.22;"
+//
+DEFINITION  seqnum=5;seqlen=3645;seqhdr="BGC0000001_14";gc_cont=30.50;transl_table=11;uses_sd=1
+FEATURES             Location/Qualifiers
+     CDS             <1..>3645
+                     /note=";gc_cont=0.772;tscore=1.61;"
+//
+DEFINITION  seqnum=6;seqlen=992;seqhdr="BGC0000001_15";gc_cont=30.50;transl_table=11;uses_sd=1
+FEATURES             Location/Qualifiers
+     CDS             complement(<3..>992)
+                     /note=";gc_cont=0.769;tscore=1.61;"
+//
+DEFINITION  seqnum=7;seqlen=538;seqhdr="BGC0000001_19";gc_cont=30.50;transl_table=11;uses_sd=1
+FEATURES             Location/Qualifiers
+     CDS             complement(<2..>538)
+                     /note=";gc_cont=0.793;tscore=1.61;"
+//
+DEFINITION  seqnum=8;seqlen=539;seqhdr="BGC0000001_22";gc_cont=30.50;transl_table=11;uses_sd=1
+FEATURES             Location/Qualifiers
+     CDS             complement(<2..>538)
+                     /note=";gc_cont=0.808;tscore=1.61;"
+//

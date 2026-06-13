@@ -1,0 +1,25 @@
+{
+  "status": "failed",
+  "error": "antiSMASH job failed or timed out",
+  "job_id": "bacteria-fb8dc5f2-72b3-4142-83a3-4f36257b9577",
+  "our_predictions": [
+    {
+      "bgc_id": "VBGC_0001",
+      "bgc_class": "Type I PKS",
+      "score": 0.89,
+      "novelty": 24.5
+    },
+    {
+      "bgc_id": "VBGC_0002",
+      "bgc_class": "NRPS",
+      "score": 0.85,
+      "novelty": 18.2
+    },
+    {
+      "bgc_id": "VBGC_0003",
+      "bgc_class": "RiPP",
+      "score": 0.78,
+      "novelty": 32.1
+    }
+  ]
+}

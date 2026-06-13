@@ -1,0 +1,66 @@
+DEFINITION  seqnum=1;seqlen=1926;seqhdr="AF093249.1 Homo sapiens PHR1 isoform 4 (PHRET1) mRNA, alternatively spliced, complete cds";gc_cont=51.40;transl_table=11;uses_sd=0
+FEATURES             Location/Qualifiers
+     CDS             114..683
+                     /note=";gc_cont=0.647;tscore=4.24;"
+     CDS             complement(587..820)
+                     /note=";gc_cont=0.645;tscore=3.91;"
+     CDS             complement(1530..1796)
+                     /note=";gc_cont=0.539;tscore=4.24;"
+     CDS             1840..>1926
+                     /note=";gc_cont=0.310;tscore=4.24;"
+//
+DEFINITION  seqnum=2;seqlen=27448;seqhdr="AB212624.1 Streptomyces sp. KO-3988 furaquinocin A biosynthetic gene cluster, complete cds";gc_cont=69.80;transl_table=11;uses_sd=1
+FEATURES             Location/Qualifiers
+     CDS             <3..185
+                     /note=";gc_cont=0.743;tscore=3.22;"
+     CDS             695..1765
+                     /note=";gc_cont=0.689;tscore=4.54;"
+     CDS             1854..2363
+                     /note=";gc_cont=0.710;tscore=-3.38;"
+     CDS             2369..3526
+                     /note=";gc_cont=0.724;tscore=4.54;"
+     CDS             3523..4518
+                     /note=";gc_cont=0.723;tscore=4.54;"
+     CDS             4553..6139
+                     /note=";gc_cont=0.715;tscore=4.54;"
+     CDS             6199..7272
+                     /note=";gc_cont=0.662;tscore=4.54;"
+     CDS             7425..8348
+                     /note=";gc_cont=0.629;tscore=4.54;"
+     CDS             8345..9649
+                     /note=";gc_cont=0.659;tscore=4.54;"
+     CDS             9709..10716
+                     /note=";gc_cont=0.737;tscore=-3.38;"
+     CDS             10706..11719
+                     /note=";gc_cont=0.762;tscore=4.54;"
+     CDS             11716..12855
+                     /note=";gc_cont=0.769;tscore=4.54;"
+     CDS             12852..13943
+                     /note=";gc_cont=0.715;tscore=4.54;"
+     CDS             13940..14998
+                     /note=";gc_cont=0.693;tscore=4.54;"
+     CDS             15003..16178
+                     /note=";gc_cont=0.710;tscore=4.54;"
+     CDS             16259..17233
+                     /note=";gc_cont=0.731;tscore=4.54;"
+     CDS             17341..19278
+                     /note=";gc_cont=0.735;tscore=-3.38;"
+     CDS             19268..20722
+                     /note=";gc_cont=0.761;tscore=4.54;"
+     CDS             complement(20691..20873)
+                     /note=";gc_cont=0.689;tscore=3.27;"
+     CDS             complement(20870..21499)
+                     /note=";gc_cont=0.644;tscore=4.54;"
+     CDS             21724..22794
+                     /note=";gc_cont=0.729;tscore=-3.38;"
+     CDS             23040..23717
+                     /note=";gc_cont=0.711;tscore=4.54;"
+     CDS             23859..24932
+                     /note=";gc_cont=0.696;tscore=-3.38;"
+     CDS             complement(25035..25982)
+                     /note=";gc_cont=0.694;tscore=4.54;"
+     CDS             complement(26139..27167)
+                     /note=";gc_cont=0.736;tscore=-3.38;"
+     CDS             complement(27164..>27448)
+                     /note=";gc_cont=0.814;tscore=3.22;"
+//

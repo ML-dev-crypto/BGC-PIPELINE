@@ -1,0 +1,7 @@
+{
+  "status": "success",
+  "total_orfs_predicted": 2,
+  "input_hash": "6135338dfab69cd5",
+  "proteins_faa": "pipeline_run_output7\\detection_work\\regions_proteins.faa",
+  "error": null
+}

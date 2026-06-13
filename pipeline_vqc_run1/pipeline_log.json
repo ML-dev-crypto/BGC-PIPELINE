@@ -1,0 +1,72 @@
+{
+  "status": "completed",
+  "sequences_input": 3,
+  "bgc_count": 1,
+  "steps": [
+    {
+      "step": "input_qc",
+      "status": "success"
+    },
+    {
+      "step": "orf_calling",
+      "status": "success"
+    },
+    {
+      "step": "domain_annotation",
+      "status": "success"
+    },
+    {
+      "step": "bgc_classification",
+      "status": "success"
+    },
+    {
+      "step": "novelty_assessment",
+      "status": "success"
+    },
+    {
+      "step": "vqc_ranking",
+      "status": "success",
+      "vqc_accuracy": 0.8125,
+      "vqc_roc_auc": 0.776,
+      "architecture": "6q \u00d7 3L StronglyEntanglingLayers",
+      "train_samples": 250,
+      "mibig_bgcs": 2636,
+      "training_time_s": 392.48,
+      "candidates_scored": 1
+    }
+  ],
+  "duration_seconds": 412.71,
+  "detection_meta": {
+    "bgc_count": 1,
+    "bgc_log": "pipeline_vqc_run1\\detection_work\\bgc_classification.log.json",
+    "bgc_csv": "pipeline_vqc_run1\\detection_work\\bgc_candidates.csv",
+    "orf_log": "pipeline_vqc_run1\\detection_work\\orf_calling.log.json",
+    "domain_table": "pipeline_vqc_run1\\detection_work\\domains\\domain_table.csv",
+    "detection_status": "completed",
+    "detection_error": null,
+    "detection_warning": null
+  },
+  "vqc_summary": {
+    "vqc_available": true,
+    "vqc_accuracy": 0.8125,
+    "vqc_roc_auc": 0.776,
+    "vqc_precision": 0.9636,
+    "vqc_recall": 0.803,
+    "architecture": "6q \u00d7 3L StronglyEntanglingLayers",
+    "train_samples": 250,
+    "mibig_bgcs_used": 2636,
+    "training_time_s": 392.48,
+    "fallback_reason": null,
+    "candidates": [
+      {
+        "region_id": "AB212624.1",
+        "predicted_type": "Terpene",
+        "confidence_score": 0.6,
+        "confidence_level": "medium",
+        "completeness": "partial",
+        "quantum_score": 0.4844,
+        "final_score": 0.5538
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+#                                                                            --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord
+# target name        accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+#------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------
+#
+# Program:         hmmscan
+# Version:         3.4 (Aug 2023)
+# Pipeline mode:   SCAN
+# Query file:      /root/bgc_work/hmmscan_work/query_proteins.faa
+# Target file:     /root/bgc_work/pfam_data/Pfam-A.hmm
+# Option settings: hmmscan --domtblout /root/bgc_work/hmmscan_work/pfam_hits.domtblout --noali -E 1e-5 --domE 1e-5 --cpu 4 /root/bgc_work/pfam_data/Pfam-A.hmm /root/bgc_work/hmmscan_work/query_proteins.faa 
+# Current dir:     /mnt/d/web.dv
+# Date:            Fri Jun 12 10:16:58 2026
+# [ok]

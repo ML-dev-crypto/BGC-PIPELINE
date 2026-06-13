@@ -1,0 +1,68 @@
+{
+  "input_file": "edna_sample2_bgc.fasta",
+  "total_contigs": 3,
+  "passed": 2,
+  "failed": 1,
+  "pass_rate": 66.7,
+  "fail_rate": 33.3,
+  "failure_reasons": {
+    "low_complexity": 1
+  },
+  "sequence_origins": {
+    "unknown": 2,
+    "synthetic": 1
+  },
+  "qc_thresholds": {
+    "min_length_bp": 500,
+    "max_n_percent": 10.0,
+    "min_entropy_bits": 1.5,
+    "entropy_window_size_bp": 100,
+    "abort_threshold_percent": 80.0
+  },
+  "per_contig_results": [
+    {
+      "contig_id": "BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial",
+      "length": 880,
+      "n_content": 0.34,
+      "min_entropy": 1.897,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC_lantipeptide_003|type:class_II_lantipeptide|organism:marine_Firmicutes_env|completeness:full",
+      "length": 979,
+      "n_content": 0.0,
+      "min_entropy": 1.83,
+      "sequence_origin": "unknown",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "BGC_aminoglycoside_008|type:aminoglycoside_biosynthesis|organism:Micromonospora_sp_env|completeness:full",
+      "length": 1062,
+      "n_content": 0.0,
+      "min_entropy": 1.446,
+      "sequence_origin": "synthetic",
+      "passed": false,
+      "failure_reasons": [
+        "low_complexity_entropy_1.45"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": false
+      }
+    }
+  ]
+}

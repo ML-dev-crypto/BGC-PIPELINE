@@ -1,0 +1,42 @@
+{
+  "status": "completed",
+  "sequences_input": 3,
+  "bgc_count": 0,
+  "steps": [
+    {
+      "step": "input_qc",
+      "status": "success"
+    },
+    {
+      "step": "orf_calling",
+      "status": "success"
+    },
+    {
+      "step": "domain_annotation",
+      "status": "success"
+    },
+    {
+      "step": "bgc_classification",
+      "status": "success"
+    },
+    {
+      "step": "novelty_assessment",
+      "status": "success"
+    },
+    {
+      "step": "vqc_ranking",
+      "status": "api_only"
+    }
+  ],
+  "duration_seconds": 8.58,
+  "detection_meta": {
+    "bgc_count": 0,
+    "bgc_log": "pipeline_run_output7\\detection_work\\bgc_classification.log.json",
+    "bgc_csv": "pipeline_run_output7\\detection_work\\bgc_candidates.csv",
+    "orf_log": "pipeline_run_output7\\detection_work\\orf_calling.log.json",
+    "domain_table": "pipeline_run_output7\\detection_work\\domains\\domain_table.csv",
+    "detection_status": "completed",
+    "detection_error": null,
+    "detection_warning": null
+  }
+}

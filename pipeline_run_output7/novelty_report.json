@@ -1,0 +1,32 @@
+{
+  "input_hash": "94c95d3ba0afef27",
+  "mibig_version": "4.0",
+  "mibig_size": 2636,
+  "total_sequences": 2,
+  "novel_count": 1,
+  "novel_threshold": 40.0,
+  "novelty_percentage": 50.0,
+  "average_novelty": 41.28,
+  "average_confidence": 0.706,
+  "novelty_distribution": {
+    "high_novelty_70plus": 0,
+    "medium_novelty_40to70": 1,
+    "low_novelty_below40": 1
+  },
+  "per_sequence_novelty": [
+    {
+      "seq_id": "BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial",
+      "novelty_percentage": 49.2,
+      "confidence": 0.705,
+      "length": 880,
+      "gc_content": 49.77
+    },
+    {
+      "seq_id": "BGC_lantipeptide_003|type:class_II_lantipeptide|organism:marine_Firmicutes_env|completeness:full",
+      "novelty_percentage": 33.37,
+      "confidence": 0.706,
+      "length": 979,
+      "gc_content": 33.2
+    }
+  ]
+}

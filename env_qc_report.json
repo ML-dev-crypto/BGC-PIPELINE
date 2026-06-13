@@ -1,0 +1,155 @@
+{
+  "input_file": "uploads\\job_1778159964.fasta",
+  "total_contigs": 9,
+  "passed": 7,
+  "failed": 2,
+  "pass_rate": 77.8,
+  "fail_rate": 22.2,
+  "failure_reasons": {
+    "low_complexity": 1,
+    "high_n": 1
+  },
+  "sequence_origins": {
+    "environmental": 5,
+    "marker": 4
+  },
+  "qc_thresholds": {
+    "min_length_bp": 500,
+    "max_n_percent": 10.0,
+    "min_entropy_bits": 1.5,
+    "entropy_window_size_bp": 100,
+    "abort_threshold_percent": 80.0
+  },
+  "per_contig_results": [
+    {
+      "contig_id": "env_sample_001|location:soil_sample_A|depth:5cm",
+      "length": 715,
+      "n_content": 0.0,
+      "min_entropy": 1.952,
+      "sequence_origin": "environmental",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "synthetic_marker_BGC_001|type:biosynthetic_cluster|organism:engineered_metagenomic",
+      "length": 1714,
+      "n_content": 0.0,
+      "min_entropy": 1.585,
+      "sequence_origin": "marker",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "env_sample_002|location:soil_sample_A|depth:10cm",
+      "length": 720,
+      "n_content": 0.0,
+      "min_entropy": 1.999,
+      "sequence_origin": "environmental",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "synthetic_marker_PKS_NRPS_002|type:polyketide_nonribosomal_synthetase|confidence:high",
+      "length": 1704,
+      "n_content": 0.0,
+      "min_entropy": 1.915,
+      "sequence_origin": "marker",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "env_sample_003|location:marine_sediment|depth:surface",
+      "length": 744,
+      "n_content": 0.94,
+      "min_entropy": 2.0,
+      "sequence_origin": "environmental",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "synthetic_marker_RiPP_003|type:ribosomally_peptide|organism:environmental_clone",
+      "length": 1043,
+      "n_content": 0.0,
+      "min_entropy": 1.998,
+      "sequence_origin": "marker",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "env_sample_004|location:wastewater_treatment|depth:activated_sludge",
+      "length": 720,
+      "n_content": 0.0,
+      "min_entropy": 1.0,
+      "sequence_origin": "environmental",
+      "passed": false,
+      "failure_reasons": [
+        "low_complexity_entropy_1.00"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": false
+      }
+    },
+    {
+      "contig_id": "synthetic_marker_T2PKS_004|type:type2_polyketide_synthase|marker_confidence:very_high",
+      "length": 1785,
+      "n_content": 0.0,
+      "min_entropy": 1.915,
+      "sequence_origin": "marker",
+      "passed": true,
+      "failure_reasons": [],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "complexity": true
+      }
+    },
+    {
+      "contig_id": "env_sample_005|location:soil_sample_A|depth:20cm|quality:poor",
+      "length": 720,
+      "n_content": 37.36,
+      "min_entropy": 2.17,
+      "sequence_origin": "environmental",
+      "passed": false,
+      "failure_reasons": [
+        "high_n_content_37.4%"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": false,
+        "complexity": true
+      }
+    }
+  ]
+}

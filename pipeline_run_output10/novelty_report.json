@@ -1,0 +1,32 @@
+{
+  "input_hash": "fb570683395bc1d3",
+  "mibig_version": "4.0",
+  "mibig_size": 2636,
+  "total_sequences": 2,
+  "novel_count": 2,
+  "novel_threshold": 40.0,
+  "novelty_percentage": 100.0,
+  "average_novelty": 52.19,
+  "average_confidence": 0.788,
+  "novelty_distribution": {
+    "high_novelty_70plus": 0,
+    "medium_novelty_40to70": 2,
+    "low_novelty_below40": 0
+  },
+  "per_sequence_novelty": [
+    {
+      "seq_id": "AF093249.1",
+      "novelty_percentage": 54.43,
+      "confidence": 0.712,
+      "length": 1926,
+      "gc_content": 54.83
+    },
+    {
+      "seq_id": "AB212624.1",
+      "novelty_percentage": 49.94,
+      "confidence": 0.865,
+      "length": 27448,
+      "gc_content": 71.43
+    }
+  ]
+}

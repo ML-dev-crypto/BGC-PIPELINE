@@ -1,0 +1,96 @@
+{
+  "input_file": "uploads\\job_1778266473.fasta",
+  "input_hash": "45f85e643482d22e",
+  "total_sequences": 3,
+  "passed_sequences": 0,
+  "failed_sequences": 3,
+  "pass_rate": 0.0,
+  "failure_reasons": {
+    "complexity": 3
+  },
+  "qc_thresholds": {
+    "min_length": 500,
+    "max_n_percent": 10.0,
+    "min_gc_percent": 20.0,
+    "max_gc_percent": 80.0,
+    "max_homopolymer_run": 15,
+    "min_complexity_score": 0.3
+  },
+  "per_sequence_results": [
+    {
+      "seq_id": "BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial",
+      "length": 880,
+      "gc_content": 49.77,
+      "n_content": 0.34,
+      "homopolymer_base": "A",
+      "homopolymer_length": 2,
+      "complexity_score": -0.384,
+      "is_repeat": false,
+      "repeat_pattern": "None",
+      "passed": false,
+      "failures": [
+        "complexity"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": true
+      }
+    },
+    {
+      "seq_id": "BGC_lantipeptide_003|type:class_II_lantipeptide|organism:marine_Firmicutes_env|completeness:full",
+      "length": 979,
+      "gc_content": 33.2,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 3,
+      "complexity_score": -0.36,
+      "is_repeat": false,
+      "repeat_pattern": "None",
+      "passed": false,
+      "failures": [
+        "complexity"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": true
+      }
+    },
+    {
+      "seq_id": "BGC_aminoglycoside_008|type:aminoglycoside_biosynthesis|organism:Micromonospora_sp_env|completeness:full",
+      "length": 1062,
+      "gc_content": 33.15,
+      "n_content": 0.0,
+      "homopolymer_base": "A",
+      "homopolymer_length": 3,
+      "complexity_score": -0.404,
+      "is_repeat": false,
+      "repeat_pattern": "None",
+      "passed": false,
+      "failures": [
+        "complexity"
+      ],
+      "checks": {
+        "length": true,
+        "n_content": true,
+        "gc_content": true,
+        "homopolymer": true,
+        "complexity": false,
+        "repeat_pattern": true
+      }
+    }
+  ],
+  "passed_seq_ids": [],
+  "failed_seq_ids": [
+    "BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial",
+    "BGC_lantipeptide_003|type:class_II_lantipeptide|organism:marine_Firmicutes_env|completeness:full",
+    "BGC_aminoglycoside_008|type:aminoglycoside_biosynthesis|organism:Micromonospora_sp_env|completeness:full"
+  ]
+}

@@ -1,0 +1,2 @@
+region_id,genes,domains,bgc_domains,domain_types,gene_span_bp,predicted_type,confidence_score,confidence_level,completeness_score,completeness_tag,completeness,has_start_codon,has_stop_codon,n_content_pct,type_scores,description
+BGC_terpene_002|type:terpene_cyclase|organism:uncultured_Actinobacteria|completeness:partial,1,6,1,['Terpene_synth'],0,Terpene,0.5,low,0.5,partial,partial,False,False,0.34,"{'PKS': 0.1, 'NRPS': 0.1, 'PKS-NRPS': 0.1, 'RiPP': 0.2, 'Terpene': 0.5, 'Other': 0.2}",Terpene biosynthetic cluster

@@ -1,0 +1,17 @@
+{
+  "input_hash": "e3b0c44298fc1c14",
+  "mibig_version": "4.0",
+  "mibig_size": 2636,
+  "total_sequences": 0,
+  "novel_count": 0,
+  "novel_threshold": 40.0,
+  "novelty_percentage": 0.0,
+  "average_novelty": 0.0,
+  "average_confidence": 0.0,
+  "novelty_distribution": {
+    "high_novelty_70plus": 0,
+    "medium_novelty_40to70": 0,
+    "low_novelty_below40": 0
+  },
+  "per_sequence_novelty": []
+}

@@ -1,0 +1,2 @@
+region_id,genes,domains,bgc_domains,domain_types,gene_span_bp,predicted_type,confidence_score,confidence_level,completeness_score,completeness_tag,completeness,has_start_codon,has_stop_codon,n_content_pct,type_scores,description
+AB212624.1,22,45,6,"['MT', 'Terpene_synth', 'A', 'NAD', 'ACP', 'P450']",25444,Terpene,0.6,medium,0.5,partial,partial,False,False,0.0,"{'PKS': 0.325, 'NRPS': 0.3333333333333333, 'PKS-NRPS': 0.45, 'RiPP': 0.23333333333333334, 'Terpene': 0.6, 'Other': 0.5499999999999999}",Terpene biosynthetic cluster
