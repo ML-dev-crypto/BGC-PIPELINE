@@ -1,0 +1,60 @@
+{
+  "_comment": "BGC-QDR reproducibility config. Pin all seeds and hyperparameters here.",
+  "random_seed": 42,
+  "dataset": {
+    "mibig_version": "4.0",
+    "mibig_bgcs": 2636,
+    "active_label_classes": ["PKS", "NRPS", "ribosomal", "terpene"],
+    "inactive_label_classes": ["saccharide", "other"],
+    "train_test_split": 0.15,
+    "stratify": true
+  },
+  "vqc": {
+    "n_qubits": 6,
+    "n_layers": 3,
+    "n_params": 54,
+    "embedding": "AngleEmbedding_Y_rotation",
+    "ansatz": "StronglyEntanglingLayers",
+    "epochs": 60,
+    "batch_size": 5,
+    "learning_rate": 0.02,
+    "optimizer": "Adam",
+    "diff_method": "backprop",
+    "backend": "default.qubit",
+    "pca_components": 6,
+    "qml_train_limit": 250,
+    "qml_val_limit": 80,
+    "class_weight_cap": 3.0
+  },
+  "classical_baselines": {
+    "LogisticRegression": {"C": 1.0, "max_iter": 2000, "class_weight": "balanced"},
+    "RandomForest": {"n_estimators": 300, "max_depth": 12, "class_weight": "balanced"},
+    "XGBoost": {"n_estimators": 300, "max_depth": 6, "learning_rate": 0.05},
+    "MLP": {"hidden_layer_sizes": [128, 64, 32], "max_iter": 500}
+  },
+  "cross_validation": {
+    "n_folds": 5,
+    "shuffle": true,
+    "stratify": true
+  },
+  "ablation_grid": {
+    "n_qubits": [4, 6, 8],
+    "n_layers": [2, 3, 4]
+  },
+  "features": {
+    "domain_features": [
+      "PKS_KS", "PKS_AT", "PP-binding",
+      "mod_KS", "hyb_KS", "itr_KS",
+      "AMP-binding", "Condensation",
+      "p450",
+      "Glycos_transf_1", "MGT",
+      "adh_short", "ADH_zinc_N",
+      "Abhydrolase_6", "RmlD_sub_bind"
+    ],
+    "structural_features": ["cluster_length_kb", "module_count"],
+    "total_features": 17
+  },
+  "primary_metric": "roc_auc",
+  "significance_test": "wilcoxon_signed_rank",
+  "significance_alpha": 0.05
+}
